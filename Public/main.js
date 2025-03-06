@@ -2,22 +2,31 @@
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext("2d");
 
-let x = 50;
-let y = 50;
+let x = -930;
+let y = -800;
 
 const player = new Image();
 player.src = '../Assets/Player/B_andar.png'; // 14 * 19
-let playerY = 0
-let playerX = 0;
+let playerY = 33;
+let playerX = 17;
 
 
 const map = new Image();
-map.src = '../Assets/Map/Berry_Forest.jpg';
+map.src = '../Assets/Map/Berry_Forest.jpg'; // 912 * 752
 
-function draw(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    ctx.drawImage(map, 0,0);
-    ctx.drawImage(player,playerX,playerY,15,20,x,y,20,40);
+const mapBlur = new Image();
+mapBlur.src = '../Assets/Map/Berry_Forest_Blur.jpg'; // 912 * 752
+
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    ctx.drawImage(mapBlur, x, y, canvas.width * 2, canvas.height * 2,);
+    ctx.drawImage(map, x, y, canvas.width * 2, canvas.height * 2,);
+
+    ctx.drawImage(player, playerX, playerY, 16, 20,
+        canvas.width / 2 - 14,
+        canvas.height / 2 - 19,
+        14*2 , 19*2);
 }
 
 document.addEventListener('keydown', function (event) {
@@ -25,24 +34,24 @@ document.addEventListener('keydown', function (event) {
 
         case 'ArrowUp':
         case 'w':
-            y -= 10;
+            y += 10;
             andarArriba();
             break;
         case 'ArrowDown':
         case 's':
-            y += 10;
+            y -= 10;
             andarAbajo();
             break;
 
         case 'ArrowRight':
         case 'd':
-            x += 10;
+            x -= 10;
             andarDerecha();
             break;
 
         case 'ArrowLeft':
         case 'a':
-            x -= 10;
+            x += 10;
             andarIzquierda();
             break;
     }

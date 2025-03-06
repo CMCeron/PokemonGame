@@ -3,6 +3,7 @@
     :root {
         --background: #F0F0D7;
         --LightBack: #AAB99A;
+        --gameBackground: white;
     }
 }
 
@@ -11,18 +12,22 @@
     :root {
         --background: #032240;
         --LightBack: #024137;
+        --gameBackground: black;
     }
 }
 
 body{
     background-color: var(--background);
+    font-size: 19px;
 }
 
 canvas{
-    background-color: white;
-    width: 90%;
-    height: 600px;
+    background-color: var(--gameBackground);
+    width: 912;
+    height: 752;
     display: block;
     margin: 20px auto;
 }
-
+#blur{
+    filter: blur(10);
+}
