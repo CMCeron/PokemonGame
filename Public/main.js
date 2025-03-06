@@ -15,13 +15,13 @@ const map = new Image();
 map.src = '../Assets/Map/Berry_Forest.jpg'; // 912 * 752
 
 const mapBlur = new Image();
-mapBlur.src = '../Assets/Map/Berry_Forest_Blur.jpg'; // 912 * 752
+mapBlur.src = '../Assets/Map/Berry_Forest_Blur.png'; // 912 * 752
 
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    ctx.drawImage(mapBlur, x, y, canvas.width * 2, canvas.height * 2,);
-    ctx.drawImage(map, x, y, canvas.width * 2, canvas.height * 2,);
+    ctx.drawImage(mapBlur, x-100, y-80, canvas.width * 2+200, canvas.height * 2+160);
+    ctx.drawImage(map, x, y, canvas.width * 2, canvas.height * 2);
 
     ctx.drawImage(player, playerX, playerY, 16, 20,
         canvas.width / 2 - 14,
