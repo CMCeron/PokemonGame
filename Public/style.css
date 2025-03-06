@@ -1,0 +1,28 @@
+@media (prefers-color-scheme: light) {
+    /* Estilos para el modo claro */
+    :root {
+        --background: #F0F0D7;
+        --LightBack: #AAB99A;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    /* Estilos para el modo oscuro */
+    :root {
+        --background: #032240;
+        --LightBack: #024137;
+    }
+}
+
+body{
+    background-color: var(--background);
+}
+
+canvas{
+    background-color: white;
+    width: 90%;
+    height: 600px;
+    display: block;
+    margin: 20px auto;
+}
+
