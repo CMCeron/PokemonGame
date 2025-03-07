@@ -18,6 +18,9 @@ map.src = '../Assets/Map/Berry_Forest.jpg'; // 912 * 752
 const mapBlur = new Image();
 mapBlur.src = '../Assets/Map/Berry_Forest_Blur.png'; // 912 * 752
 
+const tree = new Image();
+tree.src = '../Assets/Map/Berry_Forest_Trees.png'
+
 // COLISIONS MAP
 const colision = new Image();
 colision.src = '../Assets/Map/Berry_Forest.svg';
@@ -29,12 +32,14 @@ function draw() {
 
     ctx.drawImage(mapBlur, x - 100, y - 80, canvas.width * 2 + 200, canvas.height * 2 + 160);
     ctx.drawImage(map, x, y, canvas.width * 2, canvas.height * 2);
-    ctx.drawImage(colision, x, y, canvas.width * 2, canvas.height * 2);
+    //ctx.drawImage(colision, x, y, canvas.width * 2, canvas.height * 2);
 
     ctx.drawImage(player, playerX, playerY, 16, 20,
         canvas.width / 2 - 14,
         canvas.height / 2 - 19,
         14 * 2, 19 * 2);
+
+    ctx.drawImage(tree, x, y, canvas.width * 2, canvas.height * 2);
 }
 
 function checkCollision(newX, newY) {
@@ -44,10 +49,10 @@ function checkCollision(newX, newY) {
     ctx.drawImage(colision, x, y, canvas.width * 2, canvas.height * 2);
 
     ctx.strokeStyle = "rgba(13, 255, 0, 0.201)";
-    ctx.rect(newX, newY + 23, 14 * 2, 19);
+    ctx.rect(newX, newY, 14 * 2, 19);
     ctx.stroke();
 
-    let imgData = ctx.getImageData(newX, newY + 23, 14 * 2, 19).data;
+    let imgData = ctx.getImageData(newX, newY, 14 * 2, 19).data;
     return imgData[3] !== 255;
 }
 
@@ -80,8 +85,8 @@ document.addEventListener('keydown', function (event) {
 })
 
 function movePlayer(sX, sY) {
-    const newX = (canvas.width / 2 - 14) + (-sX);
-    const newY = (canvas.height / 2 - 19) + (-sY);
+    const newX = (canvas.width / 2) + (-sX);
+    const newY = (canvas.height / 2) + (-sY);
 
     // Fuera del canvas
     if (newX < 0 || newX + 14 * 2 > canvas.width || newY < 0 || newY + 19 * 2 > canvas.height) {
