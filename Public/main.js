@@ -23,7 +23,7 @@ const colision = new Image();
 colision.src = '../Assets/Map/Berry_Forest.svg';
 
 function draw() {
-    canvas.style.backgroundColor= 'var(--gameBackground)';
+    canvas.style.backgroundColor = 'var(--gameBackground)';
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -38,15 +38,16 @@ function draw() {
 }
 
 function checkCollision(newX, newY) {
-    canvas.style.backgroundColor= '';
+    canvas.style.backgroundColor = '';
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     ctx.drawImage(colision, x, y, canvas.width * 2, canvas.height * 2);
-/*
-    ctx.fillStyle = "green";
-    ctx.fillRect(newX, newY, 14*2, 2);
-*/
-    const imgData = ctx.getImageData(newX, newY, 14*2, 2).data;
+
+    ctx.strokeStyle = "rgba(13, 255, 0, 0.201)";
+    ctx.rect(newX, newY + 23, 14 * 2, 19);
+    ctx.stroke();
+
+    let imgData = ctx.getImageData(newX, newY + 23, 14 * 2, 19).data;
     return imgData[3] !== 255;
 }
 
@@ -79,22 +80,24 @@ document.addEventListener('keydown', function (event) {
 })
 
 function movePlayer(sX, sY) {
-    const newX = (canvas.width / 2 - 14) + sX;
-    const newY = (canvas.height / 2 - 19/2) + sY;
+    const newX = (canvas.width / 2 - 14) + (-sX);
+    const newY = (canvas.height / 2 - 19) + (-sY);
 
-    // Verificar si el personaje está fuera del canvas
+    // Fuera del canvas
     if (newX < 0 || newX + 14 * 2 > canvas.width || newY < 0 || newY + 19 * 2 > canvas.height) {
         return; // Si está fuera, no se mueve
     }
 
-    // Verificar si el personaje está fuera del mapa de colisiones
+    // Fuera del mapa de colisiones
     if (newX < 0 || newX + 14 * 2 > canvas.width * 2 || newY < 0 || newY + 19 * 2 > canvas.height * 2) {
-        return; // Si está fuera, no se mueve
+        return;
     }
-    
+
     if (checkCollision(newX, newY)) {
         x += sX;
         y += sY;
+    } else {
+        return;
     }
 }
 
