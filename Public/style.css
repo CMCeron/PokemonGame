@@ -22,7 +22,6 @@ body{
 }
 
 canvas{
-    background-color: var(--gameBackground);
     width: 912;
     height: 752;
     display: block;
