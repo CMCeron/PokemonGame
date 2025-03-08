@@ -1,11 +1,46 @@
+function movePlayer(sX, sY) {
+    const newX = (canvas.width / 2) + (-sX);
+    const newY = (canvas.height / 2) + (-sY);
+
+    // Fuera del canvas
+    if (newX < 0 || newX + 14 * 2 > canvas.width || newY < 0 || newY + 19 * 2 > canvas.height) {
+        x = -930;
+        y = -800;
+    }
+
+    // Fuera del mapa de colisiones
+    if (newX < 0 || newX + 14 * 2 > canvas.width * 2 || newY < 0 || newY + 19 * 2 > canvas.height * 2) {
+        x = -930;
+        y = -800;
+    }
+
+    if (checkCollision(newX, newY)) {
+        x += sX;
+        y += sY;
+    } else {
+        return;
+    }
+}
+let pierna = 0; // 0 - Derecha  1 - Izquierda
+
+function cambioPierna(){
+    if (pierna >= 1){
+        pierna = 0; // Izquierda
+        return  playerX = 34; // Derecha
+    }else{
+        pierna ++;
+        return  playerX = 0; // Derecha
+    }
+}
+
 function andarArriba(){
     playerY = 33;
     
-    setTimeout(()=>{
-        playerX = 17;
-    },1000)
+    setTimeout(()=>{        //                                            O
+        playerX = 17;   // Dejarlo parado cuando va caminando y se para  /|\
+    },2000);                //                                           / \
     
-    playerX=0
+    cambioPierna();
 }
 
 function andarAbajo(){
@@ -15,7 +50,7 @@ function andarAbajo(){
         playerX = 17;
     },1000)
 
-    playerX=0
+    cambioPierna();
 }
 
 function andarIzquierda(){
@@ -25,7 +60,7 @@ function andarIzquierda(){
         playerX = 17;
     },1000)
 
-    playerX=0
+    cambioPierna();
 }
 
 function andarDerecha(){
@@ -35,5 +70,5 @@ function andarDerecha(){
         playerX = 17;
     },1000)
 
-    playerX=0
+    cambioPierna();
 }

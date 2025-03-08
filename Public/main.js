@@ -61,50 +61,28 @@ document.addEventListener('keydown', function (event) {
 
         case 'ArrowUp':
         case 'w':
-            movePlayer(0, 10);
+            movePlayer(0, 5);
             andarArriba();
             break;
         case 'ArrowDown':
         case 's':
-            movePlayer(0, -10);
+            movePlayer(0, -5);
             andarAbajo();
             break;
 
         case 'ArrowRight':
         case 'd':
-            movePlayer(-10, 0);
+            movePlayer(-5, 0);
             andarDerecha();
             break;
 
         case 'ArrowLeft':
         case 'a':
-            movePlayer(10, 0);
+            movePlayer(5, 0);
             andarIzquierda();
             break;
     }
 })
-
-function movePlayer(sX, sY) {
-    const newX = (canvas.width / 2) + (-sX);
-    const newY = (canvas.height / 2) + (-sY);
-
-    // Fuera del canvas
-    if (newX < 0 || newX + 14 * 2 > canvas.width || newY < 0 || newY + 19 * 2 > canvas.height) {
-        return; // Si está fuera, no se mueve
-    }
-
-    // Fuera del mapa de colisiones
-    if (newX < 0 || newX + 14 * 2 > canvas.width * 2 || newY < 0 || newY + 19 * 2 > canvas.height * 2) {
-        return;
-    }
-
-    if (checkCollision(newX, newY)) {
-        x += sX;
-        y += sY;
-    } else {
-        return;
-    }
-}
 
 // Cargar imágenes
 const images = [player, map, mapBlur, colision];
