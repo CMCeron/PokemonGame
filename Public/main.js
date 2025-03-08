@@ -84,20 +84,6 @@ document.addEventListener('keydown', function (event) {
     }
 })
 
-// Cargar imágenes
-const images = [player, map, mapBlur, colision];
-let loadedImages = 0;
-
-function loadImages() {
-    loadedImages++;
-    if (loadedImages === images.length) {
-        animate();
-    }
-}
-
-images.forEach(img => img.onload = loadImages);
-
-
 function animate() {
     draw();
     requestAnimationFrame(animate);
