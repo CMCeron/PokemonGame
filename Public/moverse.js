@@ -20,7 +20,21 @@ function movePlayer(sX, sY) {
     } else {
         return;
     }
+
+    if(checkGrass(newX, newY)){
+        let appearPokemon = Math.round(Math.random() * 100 - 1);
+
+        if(appearPokemon == 10){
+            pokemons.id = Math.round(Math.random() * 3 - 1);
+            pokemons.shiny = true;
+
+        }else if(appearPokemon <= 50){
+            pokemons.id = Math.round(Math.random() * 3 - 1);
+            pokemons.shiny = false;
+        }
+    }
 }
+
 let pierna = 0; // 0 - Derecha  1 - Izquierda
 
 function cambioPierna(){
