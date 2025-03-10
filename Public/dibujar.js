@@ -1,5 +1,5 @@
 function draw() {
-    checkGrassV = !checkGrass(canvas.width / 2 + 14,canvas.height / 2 + 19); 
+    let checkGrassV = !checkGrass(canvas.width / 2 + 14,canvas.height / 2 + 19); 
     canvas.style.backgroundColor = 'var(--gameBackground)';
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -23,7 +23,9 @@ function draw() {
     }
 }
 
-function animate() {
+setInterval(draw, 500)
+
+/* function animate() {
     draw();
     requestAnimationFrame(animate);
-}
+} */

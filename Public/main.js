@@ -81,29 +81,41 @@ document.addEventListener('keydown', function (event) {
         case 'w':
             movePlayer(0, 5);
             andarArriba();
+            draw();
             break;
         case 'ArrowDown':
         case 's':
             movePlayer(0, -5);
             andarAbajo();
+            draw();
             break;
 
         case 'ArrowRight':
         case 'd':
             movePlayer(-5, 0);
             andarDerecha();
+            draw();
             break;
 
         case 'ArrowLeft':
         case 'a':
             movePlayer(5, 0);
             andarIzquierda();
+            draw();
             break;
     }
 })
 
-
+let w;
 // Cargar imágenes antes de dibujar
 player.onload = map.onload = mapBlur.onload = colision.onload = function () {
-    animate();
+    if(typeof(Worker) !== 'undefined'){
+        if(typeof(w) == 'undefined'){
+            w = new Worker('dibujar.js');
+        }
+
+        w.onmessage = function (event){
+            event.data;
+        }
+    }
 };
