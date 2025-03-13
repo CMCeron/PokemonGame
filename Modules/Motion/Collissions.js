@@ -1,3 +1,11 @@
+// COLISIONS MAP
+const colision = new Image();
+colision.src = '../Assets/Map/Berry_Forest.svg';
+
+// COLISIONS GRASS MAP
+const grassCollission = new Image();
+grassCollission.src = '../Assets/Map/Berry_Forest_Grass.svg';
+
 // Colision
 function checkCollision(newX, newY) {
 

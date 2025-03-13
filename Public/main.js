@@ -6,8 +6,10 @@ let x = -930;
 let y = -800;
 
 // PLAYER
-const player = new Image();
-player.src = '../Assets/Player/B_andar.png'; // 14 * 19
+const sheet = new Player();
+const player = sheet.walk;
+
+/* player.src = '../Assets/Player/B_andar.png'; // 14 * 19 */
 let playerY = 33;
 let playerX = 17;
 
@@ -20,14 +22,6 @@ mapBlur.src = '../Assets/Map/Berry_Forest_Blur.png'; // 912 * 752
 
 const tree = new Image();
 tree.src = '../Assets/Map/Berry_Forest_Trees.png'
-
-// COLISIONS MAP
-const colision = new Image();
-colision.src = '../Assets/Map/Berry_Forest.svg';
-
-// COLISIONS GRASS MAP
-const grassCollission = new Image();
-grassCollission.src = '../Assets/Map/Berry_Forest_Grass.svg';
 
 // GRASS IMG
 const grass = new Image();
