@@ -3,7 +3,7 @@ $url = 'http://localhost/PokemonGame/Modules/ConnectBD/conexion.php';
 include($url);
 session_start();
 
-$_SESSION['user'] = ['nombre' => 'Clemen'];
+
 
 echo $_SESSION['user']['genero'];
 
