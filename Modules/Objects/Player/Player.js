@@ -4,7 +4,7 @@ class Player {
             this.width = 14,
             this.height = 19,
 
-            this.gender = this.getGender() || 'B',
+            this.gender = Player.getGender() || 'B',
 
             this.stand = new Image();
         this.stand.src = `${this.src + this.gender}_Standing.png`,

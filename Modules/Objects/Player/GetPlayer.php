@@ -1,16 +1,13 @@
 <?php
-$url = 'http://localhost/PokemonGame/Modules/ConnectBD/conexion.php';
+$url = 'C:\xampp\htdocs\PokemonGame\Modules\ConnectBD\conexion.php';
 include($url);
 session_start();
-
-
-
-echo $_SESSION['user']['genero'];
+$_SESSION['user'] = ['nombre'=>'Clemen'];
 
 try {
     $consulta = 'SELECT genero FROM usuarios WHERE nombre=:nombre';
     $sql = $conn->prepare($consulta);
-    $sql->bindParam(":gender", $_SESSION["user"]["nombre"]);
+    $sql->bindParam(":nombre", $_SESSION["user"]["nombre"]);
     $sql->execute();
     $sheet = $sql->fetchAll(PDO::FETCH_ASSOC);
 } catch (Exception $e) {

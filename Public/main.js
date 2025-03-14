@@ -27,47 +27,6 @@ tree.src = '../Assets/Map/Berry_Forest_Trees.png'
 const grass = new Image();
 grass.src = '../Assets/Map/grass.png';
 
-// Pokemons 
-const pokemons = [
-    {
-        id: 0,
-        nombre: 'Bulbasur',
-        shiny: false,
-        src: () => {
-            if( this.shiny == false ){
-                return `${this.nombre}.png`;
-            }else{
-                return `${this.nombre}_Shiny.png`;
-            }
-        }
-    },
-    {
-        id: 1,
-        nombre: 'algo',
-        shiny: false,
-        src: () => {
-            if( this.shiny == false ){
-                return `${this.nombre}.png`;
-            }else{
-                return `${this.nombre}_Shiny.png`;
-            }
-        }
-    },
-    {
-        id: 2,
-        nombre: 'algo3',
-        shiny: false,
-        src: () => {
-            if( this.shiny == false ){
-                return `${this.nombre}.png`;
-            }else{
-                return `${this.nombre}_Shiny.png`;
-            }
-        }
-    }
-];
-
-
 document.addEventListener('keydown', function (event) {
     switch (event.key) {
 
