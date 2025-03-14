@@ -4,7 +4,15 @@ class Player {
             this.width = 14,
             this.height = 19,
 
-            this.gender = Player.getGender() || 'B',
+            this.gender = () => {
+                $.ajax({
+                    url: 'http://localhost/PokemonGame/Modules/Objects/Player/GetPlayer.php',
+                    method: 'get',
+                    success: (data, status) => {
+                        return data
+                    }
+                })
+            },
 
             this.stand = new Image();
         this.stand.src = `${this.src + this.gender}_Standing.png`,
@@ -20,16 +28,6 @@ class Player {
 
             this.BattleStart = new Image();
         this.BattleStart.src = `${this.src + this.gender}_BattleStart.png`
-    }
-
-    getGender() {
-        $.ajax({
-            url: 'http://localhost/PokemonGame/Modules/Objects/Player/GetPlayer.php',
-            method: 'get',
-            success: (data, status) => {
-                return data
-            }
-        })
     }
 
 }
