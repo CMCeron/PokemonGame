@@ -29,3 +29,5 @@ setInterval(draw, 500)
     draw();
     requestAnimationFrame(animate);
 } */
+
+    let a = /^\.$/;

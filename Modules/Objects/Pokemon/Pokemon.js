@@ -1,27 +1,23 @@
 class Pokemon {
     constructor(id, tipo, shiny) {
-        this.src = 'Player/../../Assets/Pokemons/',
+        this.src = 'Player/../../Assets/Pokemons/';
 
-            this.huella = new Image()
-        this.huella.src = `${this.src + this.getName(id)}_Huella.png`,
+        this.nombre = null;
+        this.shiny = shiny;
+        this.tipo = tipo;
 
-            this.mini = new Image()
-        this.mini = `${this.src + this.getName(id)}_Mini.png`,
+        this.huella = new Image();
+        this.mini = new Image();
+        this.base = new Image();
 
-            this.base = () => {
-                if (shiny) {
-                    return this.tipo(id) + '_Shiny.png'
-                } else {
-                    return this.tipo(id) + '.png'
-                }
-            }
+        this.getName(id);
     }
 
-    tipo(id) {
-        if (tipo == 'enemigo') {
-            return this.src + this.getName(id);
+    getTipo() {
+        if (this.tipo == 'enemigo') {
+            return this.src + this.nombre;
         } else {
-            return `${this.src + this.getName(id)}_Bak`;
+            return `${this.src + this.nombre}_Bak`;
         }
     }
 
@@ -29,10 +25,24 @@ class Pokemon {
         $.ajax({
             url: 'http://localhost/PokemonGame/Modules/Objects/Pokemon/GetPokemon.php',
             method: 'post',
-            data : {id: id},
+            data: { id: id },
             success: (data, status) => {
-                return data
+                this.nombre = data.match(/^.+/);
+                this.loadImages();
             }
         })
+    }
+
+    loadImages() {
+        if (this.nombre) {
+            this.huella.src = `${this.src + this.nombre}_Huella.png`;
+            this.mini.src = `${this.src + this.nombre}_Mini.png`;
+
+            if (this.shiny) {
+                this.base.src = this.getTipo() + '_Shiny.png';
+            } else {
+                this.base.src = this.getTipo() + '.png';
+            }
+        }
     }
 }
