@@ -22,16 +22,7 @@ function movePlayer(sX, sY) {
     }
 
     if(!checkGrass(newX, newY)){
-        let appearPokemon = Math.round(Math.random() * 100 - 1);
-
-        if(appearPokemon == 10){
-            let id = Math.round(Math.random() * 3);
-            let pokemon = new Pokemon(id, 'contra', true);
-
-        }else if(appearPokemon <= 30){
-            let id = Math.round(Math.random() * 3);
-            let pokemon = new Pokemon(id, 'contra', false);
-        }
+        lookPokemon();
     }
 }
 

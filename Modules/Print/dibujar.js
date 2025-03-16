@@ -1,5 +1,5 @@
 function draw() {
-    let checkGrassV = !checkGrass(canvas.width / 2 + 14,canvas.height / 2 + 19); 
+    let checkGrassV = !checkGrass(canvas.width / 2 + 14, canvas.height / 2 + 19);
     canvas.style.backgroundColor = 'var(--gameBackground)';
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -15,19 +15,30 @@ function draw() {
 
     ctx.drawImage(tree, x, y, canvas.width * 2, canvas.height * 2);
 
-    if(checkGrassV){
-        ctx.drawImage(grass, 0, 0, grass.width, grass.height, 
+    if (checkGrassV) {
+        ctx.drawImage(grass, 0, 0, grass.width, grass.height,
             canvas.width / 2 - 14,
             canvas.height / 2,
-            grass.width*2, grass.height*1.5)
+            grass.width * 2, grass.height * 1.5)
     }
 }
 
+let backgroundBattle = new Image();
+backgroundBattle.src = 'Print/../../Assets/Batalla/Background.jpg'
+
+function printBattle() {
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(backgroundBattle, 0, 0, canvas.width, canvas.height)
+}
+
+
 setInterval(draw, 500)
+
 
 /* function animate() {
     draw();
     requestAnimationFrame(animate);
 } */
 
-    let a = /^\.$/;
+let a = /^\.$/;
