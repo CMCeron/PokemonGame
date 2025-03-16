@@ -2,7 +2,7 @@
 $url = 'C:\xampp\htdocs\PokemonGame\Modules\ConnectBD\conexion.php';
 include($url);
 session_start();
-$_SESSION['user'] = ['nombre'=>'Ponce'];
+$_SESSION['user'] = ['nombre'=>'Clemen'];
 
 try {
     $consulta = 'SELECT genero FROM usuarios WHERE nombre=:nombre';
