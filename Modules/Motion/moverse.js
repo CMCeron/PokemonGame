@@ -28,7 +28,7 @@ function movePlayer(sX, sY) {
             let id = Math.round(Math.random() * 3);
             let pokemon = new Pokemon(id, 'contra', true);
 
-        }else if(appearPokemon <= 50){
+        }else if(appearPokemon <= 30){
             let id = Math.round(Math.random() * 3);
             let pokemon = new Pokemon(id, 'contra', false);
         }
