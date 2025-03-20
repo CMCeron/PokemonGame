@@ -34,7 +34,20 @@ function printBattle(pokemonObj) {
     battle.drawImage(backgroundBattle, 0, 0, canvas.width, canvas.height)
 
     // Pokemon Contrario
-    battle.drawImage(pokemonObj.base.src, 0,0)
+    let statRival = new Image();
+    statRival.src = "Print/../../Assets/Batalla/Stat_Rival.png";
+    battle.drawImage(statRival,0,0)
+
+
+    pokemon = pokemonObj.base;
+    battle.drawImage(
+        pokemon, 
+        canvas.width/2 + pokemon.width*2,
+        canvas.height/2 - pokemon.height*2 - pokemon.height/2,
+        pokemon.width*4,
+        pokemon.height*4
+    )
+
     //Pokemon Aliado
 }
 

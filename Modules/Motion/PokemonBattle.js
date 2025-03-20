@@ -3,17 +3,25 @@ function lookPokemon(){ // Buscar pokemon en la hierba
 
     if (pokemon == 10) {
         appearPokemon(true);
-        
+        return;
 
     } else if (pokemon <= 30) {
         appearPokemon(false)
+        return;
     }
 }
 
 function appearPokemon(shiny){ // Cuando encuentra un pokemon
     
     let id = Math.round(Math.random() * 3);
-    let pokemon = new Pokemon(id, 'contra', shiny);
+    if(id>=1){
+        canvas.style.display ='none';
 
-    printBattle(pokemon);
+        const pokemon = new Pokemon(id, 'contra', shiny);
+        console.log(pokemon);
+        setTimeout(() => {
+            console.log(pokemon.getBaseSrc());
+            printBattle(pokemon);
+        }, 1000);
+    }
 }

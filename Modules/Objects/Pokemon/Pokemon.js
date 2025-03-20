@@ -1,6 +1,6 @@
 class Pokemon {
     constructor(id, tipo, shiny) {
-        this.src = 'Player/../../Assets/Pokemons/';
+        this.src = 'Pokemon/../../Assets/Pokemons/';
 
         this.nombre = null;
         this.shiny = shiny;
@@ -10,26 +10,35 @@ class Pokemon {
         this.mini = new Image();
         this.base = new Image();
 
-        this.getName(id);
+        this.getName(id).then(() => {
+            this.loadImages();
+        }).catch((error) => {
+            console.error("Error al obtener el nombre del Pokémon:", error);
+        });
     }
-    
+
     getName(id) {
-        $.ajax({
-            url: 'http://localhost/PokemonGame/Modules/Objects/Pokemon/GetPokemon.php',
-            method: 'post',
-            data: { id: id },
-            success: (data, status) => {
-                this.nombre = data.match(/^.+/);
-                this.loadImages();
-            }
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                url: 'http://localhost/PokemonGame/Modules/Objects/Pokemon/GetPokemon.php',
+                method: 'post',
+                data: { id: id },
+                success: (data) => {
+                    this.nombre = data.match(/^.+/)[0];
+                    resolve();
+                },
+                error: (xhr, status, error) => {
+                    reject(new Error("Error en la llamada AJAX: " + status + " " + error));
+                }
+            })
         })
     }
-    
+
     loadImages() {
-        if (this.nombre) {
+            if(this.nombre) {
             this.huella.src = `${this.src + this.nombre}_Huella.png`;
             this.mini.src = `${this.src + this.nombre}_Mini.png`;
-            
+
             if (this.shiny) {
                 this.base.src = this.getTipo() + '_Shiny.png';
             } else {
@@ -43,5 +52,9 @@ class Pokemon {
         } else {
             return `${this.src + this.nombre}_Bak`;
         }
+    }
+
+    getBaseSrc() {
+        return this.base.src;
     }
 }
