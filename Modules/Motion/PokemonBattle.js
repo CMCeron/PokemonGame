@@ -28,7 +28,7 @@ function appearPokemon(shiny){ // Cuando encuentra un pokemon
 
 
 function printVida(pokemonObj){
-    pokemonObj.health = 30;
+    //pokemonObj.health = 30;
 
     if (pokemonObj.health > 50) {
         bar.src = "Print/../../Assets/Batalla/Barra_green.jpg";

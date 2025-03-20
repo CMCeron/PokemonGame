@@ -1,5 +1,5 @@
 // Imagenes
-    
+
 let backgroundBattle = new Image();
 backgroundBattle.src = 'Print/../../Assets/Batalla/Background.jpg'
 
@@ -16,15 +16,26 @@ function printBattle(pokemonObj) {
     battle.clearRect(0, 0, canvas.width, canvas.height);
     battle.drawImage(backgroundBattle, 0, 0, canvas.width, canvas.height)
 
-    
-    // Pokemon Contrario
-    
-    
-    // Pantalla status
-    battle.drawImage(statRival, 50, 50, statRival.width * 5, statRival.height * 5);
-    // Vida
 
-    printVida(pokemonObj);
+    // Pokemon Contrario
+
+
+    // Pantalla status
+    // Vida
+    setTimeout(() => {
+        battle.drawImage(statRival, 50, 50, statRival.width * 5, statRival.height * 5);
+        printVida(pokemonObj);
+
+        // Nombre
+        document.fonts.ready.then(() => {
+            battle.font = "35px 'Pixelify Sans'";
+            battle.fillStyle = "grey";
+            battle.fillText(pokemonObj.nombre, 100, 120);
+        });
+    }
+        , 1500);
+
+
 
     // Imprimir Pokemon
     pokemon = pokemonObj.base;
