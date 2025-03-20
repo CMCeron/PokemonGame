@@ -30,7 +30,7 @@ function printBattle(pokemonObj) {
         document.fonts.ready.then(() => {
             battle.font = "35px 'Pixelify Sans'";
             battle.fillStyle = "grey";
-            battle.fillText(pokemonObj.nombre, 100, 120);
+            battle.fillText(pokemonObj.nombre, 100, 110);
         });
     }
         , 1500);
