@@ -25,3 +25,21 @@ function appearPokemon(shiny){ // Cuando encuentra un pokemon
         }, 1000);
     }
 }
+
+
+function printVida(pokemonObj){
+    pokemonObj.health = 30;
+
+    if (pokemonObj.health > 50) {
+        bar.src = "Print/../../Assets/Batalla/Barra_green.jpg";
+        battle.drawImage(bar, 247, 137, 235 * pokemonObj.health/100, 12);
+
+    } else if (pokemonObj.health > 20) {
+        bar.src = "Print/../../Assets/Batalla/Barra_Yellow.jpg";
+        battle.drawImage(bar, 247, 137, 235 * pokemonObj.health/100, 12);
+
+    } else {
+        bar.src = "Print/../../Assets/Batalla/Barra_Red.jpg";
+        battle.drawImage(bar, 247, 137, 235 * pokemonObj.health/100, 12);
+    } 
+}

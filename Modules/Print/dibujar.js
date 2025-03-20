@@ -23,34 +23,6 @@ function draw() {
     }
 }
 
-let backgroundBattle = new Image();
-backgroundBattle.src = 'Print/../../Assets/Batalla/Background.jpg'
-
-function printBattle(pokemonObj) {
-    canvas.style.display ='none';
-    battalla.style.display = 'block'
-
-    battle.clearRect(0, 0, canvas.width, canvas.height);
-    battle.drawImage(backgroundBattle, 0, 0, canvas.width, canvas.height)
-
-    // Pokemon Contrario
-    let statRival = new Image();
-    statRival.src = "Print/../../Assets/Batalla/Stat_Rival.png";
-    battle.drawImage(statRival,0,0)
-
-
-    pokemon = pokemonObj.base;
-    battle.drawImage(
-        pokemon, 
-        canvas.width/2 + pokemon.width*2,
-        canvas.height/2 - pokemon.height*2 - pokemon.height/2,
-        pokemon.width*4,
-        pokemon.height*4
-    )
-
-    //Pokemon Aliado
-}
-
 
 setInterval(draw, 500)
 

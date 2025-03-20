@@ -6,6 +6,8 @@ class Pokemon {
         this.shiny = shiny;
         this.tipo = tipo;
 
+        this.health = 100;
+
         this.huella = new Image();
         this.mini = new Image();
         this.base = new Image();
