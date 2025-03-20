@@ -16,7 +16,21 @@ class Player {
 
         this.BattleStart = new Image();
 
+        this.pokemonActive = null;
+
+        this.getPokemonActive()
+
         this.getGender();
+    }
+
+    getPokemonActive() {
+        $.ajax({
+            url: 'http://localhost/PokemonGame/Modules/Objects/Player/GetPlayer.php',
+            method: 'get',
+            success: (data) => {
+                this.pokeActive = new Pokemon(...data);
+            }
+        })
     }
 
     getGender() {

@@ -48,5 +48,7 @@ function printBattle(pokemonObj) {
     )
 
     //Pokemon Aliado
+
+    getPokemonAliado();
 }
 
