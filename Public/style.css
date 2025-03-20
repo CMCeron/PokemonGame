@@ -30,3 +30,7 @@ canvas{
 #blur{
     filter: blur(10);
 }
+
+#batalla{
+    display: none;
+}

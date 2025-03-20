@@ -15,5 +15,5 @@ function appearPokemon(shiny){ // Cuando encuentra un pokemon
     let id = Math.round(Math.random() * 3);
     let pokemon = new Pokemon(id, 'contra', shiny);
 
-    printBattle();
+    printBattle(pokemon);
 }

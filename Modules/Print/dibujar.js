@@ -26,10 +26,16 @@ function draw() {
 let backgroundBattle = new Image();
 backgroundBattle.src = 'Print/../../Assets/Batalla/Background.jpg'
 
-function printBattle() {
+function printBattle(pokemonObj) {
+    canvas.style.display ='none';
+    battalla.style.display = 'block'
 
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.drawImage(backgroundBattle, 0, 0, canvas.width, canvas.height)
+    battle.clearRect(0, 0, canvas.width, canvas.height);
+    battle.drawImage(backgroundBattle, 0, 0, canvas.width, canvas.height)
+
+    // Pokemon Contrario
+    battle.drawImage(pokemonObj.base.src, 0,0)
+    //Pokemon Aliado
 }
 
 
@@ -40,5 +46,3 @@ setInterval(draw, 500)
     draw();
     requestAnimationFrame(animate);
 } */
-
-let a = /^\.$/;

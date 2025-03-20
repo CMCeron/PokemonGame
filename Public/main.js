@@ -30,8 +30,8 @@ tree.src = '../Assets/Map/Berry_Forest_Trees.png'
 const grass = new Image();
 grass.src = '../Assets/Map/grass.png';
 
-if (battalla.style.display = block) {
-    canvas.style.display = none;
+if (battalla.style.display == 'block') {
+    canvas.style.display = 'none';
 
     document.addEventListener('keydown', function (event) {
         switch (event.key) {
@@ -68,7 +68,7 @@ if (battalla.style.display = block) {
 
 }
 
-if (canvas.style.display = block) { // Si esta el juego principal
+if (canvas.style.display == '' || canvas.style.display == 'block' ) { // Si esta el juego principal
 
     document.addEventListener('keydown', function (event) {
         switch (event.key) {
