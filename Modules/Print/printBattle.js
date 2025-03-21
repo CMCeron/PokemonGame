@@ -18,14 +18,20 @@ yellowBar.src = "Print/../../Assets/Batalla/Barra_Yellow.jpg";
 const redBar = new Image();
 redBar.src = "Print/../../Assets/Batalla/Barra_Red.jpg";
 
+const message = new Image();
+message.src = "Print/../../Assets/Batalla/History.jpg";
+
+const abilities = new Image();
+abilities.src = "Print/../../Assets/Batalla/Select_Abilities.png";
+
 function printBattle(pokemonEnemigo) {
 
     canvas.style.display = 'none';
-    battalla.style.display = 'block'
+    batalla.style.display = 'block'
 
     batalla.style.backgroundColor = 'var(--gameBackground)';
     battle.clearRect(0, 0, canvas.width, canvas.height);
-    battle.drawImage(backgroundBattle, 0, 0, canvas.width, canvas.height * 3/4)
+    battle.drawImage(backgroundBattle, 0, 0, canvas.width, canvas.height * 3 / 4)
 
     setTimeout(() => {
 
@@ -33,10 +39,10 @@ function printBattle(pokemonEnemigo) {
 
         // Pantalla status
         battle.drawImage(
-            statRival, 
-            50, 
-            50, 
-            statRival.width * 5, 
+            statRival,
+            50,
+            50,
+            statRival.width * 5,
             statRival.height * 5);
 
         // Vida
@@ -53,17 +59,18 @@ function printBattle(pokemonEnemigo) {
         printPokemon(pokemonEnemigo, 'enemigo');
 
         // ------------------------------------------------------------------------------------------------------------s
-        // Pokemon Aliado
-        const player = new Player();
 
-        const pokemonAmigo = player.pokemonActive;
+
+        console.log(sheet.pokemonActive.nombre);
+        const pokemonAmigo = sheet.pokemonActive;
+
 
 
         // Pantalla status
         battle.drawImage(
             statThis,
-            battalla.width - statThis.width * 5,
-            battalla.height - statThis.height * 5 - batalla.height * 1/4,
+            batalla.width - statThis.width * 5,
+            batalla.height - statThis.height * 5 - batalla.height * 1 / 4,
             statThis.width * 5,
             statThis.height * 5
         );
@@ -86,6 +93,7 @@ function printBattle(pokemonEnemigo) {
 
     // Background Mensajes
 
+    battle.drawImage(message, batalla.height * 1/4, batalla.width, batalla.height*3/4, 0 )
 
 }
 

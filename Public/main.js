@@ -2,8 +2,8 @@
 const canvas = document.querySelector('#juego');
 const ctx = canvas.getContext("2d", { willReadFrequently: true });
 
-const battalla = document.querySelector('#batalla');
-const battle = battalla.getContext("2d", { willReadFrequently: true })
+const batalla = document.querySelector('#batalla');
+const battle = batalla.getContext("2d", { willReadFrequently: true })
 
 let x = -930;
 let y = -800;
@@ -30,7 +30,7 @@ tree.src = '../Assets/Map/Berry_Forest_Trees.png'
 const grass = new Image();
 grass.src = '../Assets/Map/grass.png';
 
-if (battalla.style.display == 'block') {
+if (batalla.style.display == 'block') {
     canvas.style.display = 'none';
 
     document.addEventListener('keydown', function (event) {

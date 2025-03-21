@@ -60,16 +60,16 @@ function printPokemon(pokemonObj, tipo) {
     if (tipo == 'enemigo') {
         battle.drawImage(
             pokemon,
-            canvas.width / 2 + pokemon.width * 2,
-            canvas.height / 2 - pokemon.height * 2 - pokemon.height / 2 - batalla.height * 1 / 4,
+            batalla.width * 3 / 4 - pokemon.width * 2,
+            batalla.height * 1 / 4 - pokemon.height * 2 * 3 / 4,
             pokemon.width * 4,
             pokemon.height * 4
         )
     } else if (tipo == 'aliado') {
         battle.drawImage(
             pokemon,
-            canvas.width / 3 + pokemon.width * 2,
-            canvas.height - pokemon.height * 2 - pokemon.height / 2 - batalla.height * 1 / 4,
+            batalla.width * 1 / 4 - pokemon.width * 2,
+            batalla.height * 3 / 4 - pokemon.height * 4,
             pokemon.width * 4,
             pokemon.height * 4
         )
@@ -83,6 +83,6 @@ function printName(pokemonObj, tipo) {
     if (tipo == 'enemigo') {
         battle.fillText(pokemonObj.nombre, 100, 110);
     } else if (tipo == 'aliado') {
-        battle.fillText(pokemonObj.nombre, battalla.width / 2 + 50, battalla.height * 3 / 4 - 100);
+        battle.fillText(pokemonObj.nombre, batalla.width / 2 + 50, batalla.height * 3 / 4 - 100);
     }
 }
