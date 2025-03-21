@@ -87,13 +87,27 @@ function printBattle(pokemonEnemigo) {
 
         // Imprimir Pokemon
         printPokemon(pokemonAmigo, 'aliado');
+
+        // Background Mensajes
+
+        battle.drawImage(
+            message,
+            0,
+            batalla.height * 3 / 4,
+            batalla.width,
+            batalla.height * 1 / 4
+        );
+
+        // Background Selección de Habilidades
+        battle.drawImage(
+            abilities,
+            batalla.width * 2/4,
+            batalla.height * 3 / 4,
+            batalla.width * 2/4,
+            batalla.height * 1 / 4
+        );
     }
         , 500);
-
-
-    // Background Mensajes
-
-    battle.drawImage(message, batalla.height * 1/4, batalla.width, batalla.height*3/4, 0 )
 
 }
 
