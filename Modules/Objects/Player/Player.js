@@ -16,9 +16,9 @@ class Player {
 
         this.BattleStart = new Image();
 
-        this.pokemonActive = null;
+        this.pokemonActive = new Pokemon(2,'aliado',false);
 
-        this.getPokemonActive()
+        //this.getPokemonActive()
 
         this.getGender();
     }
@@ -28,7 +28,8 @@ class Player {
             url: 'http://localhost/PokemonGame/Modules/Objects/Player/GetPlayer.php',
             method: 'get',
             success: (data) => {
-                this.pokeActive = new Pokemon(...data);
+                data = JSON.parse(data)
+                this.pokemonActive = new Pokemon(...data);
             }
         })
     }

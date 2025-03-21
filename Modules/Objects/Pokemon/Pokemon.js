@@ -56,7 +56,4 @@ class Pokemon {
         }
     }
 
-    getBaseSrc() {
-        return this.base.src;
-    }
 }

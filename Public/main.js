@@ -40,7 +40,7 @@ if (battalla.style.display == 'block') {
             case 'w':
                 selectUp();
                 break;
-                
+
             case 'ArrowDown':
             case 's':
                 selectDown();
@@ -68,9 +68,9 @@ if (battalla.style.display == 'block') {
 
 }
 
-if (canvas.style.display == '' || canvas.style.display == 'block' ) { // Si esta el juego principal
 
-    document.addEventListener('keydown', function (event) {
+document.addEventListener('keydown', function (event) {
+    if (canvas.style.display == '' || canvas.style.display == 'block') { // Si esta el juego principal
         switch (event.key) {
 
             case 'ArrowUp':
@@ -100,8 +100,9 @@ if (canvas.style.display == '' || canvas.style.display == 'block' ) { // Si esta
                 draw();
                 break;
         }
-    })
-
+    }
+})
+if (canvas.style.display == '' || canvas.style.display == 'block') { // Si esta el juego principal
     let w;
     // Cargar imágenes antes de dibujar
     player.onload = map.onload = mapBlur.onload = colision.onload = function () {
@@ -114,6 +115,6 @@ if (canvas.style.display == '' || canvas.style.display == 'block' ) { // Si esta
                 event.data;
             }
         }
-    };
+    }
 }
 

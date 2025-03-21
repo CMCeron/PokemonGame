@@ -6,49 +6,86 @@ backgroundBattle.src = 'Print/../../Assets/Batalla/Background.jpg'
 const statRival = new Image();
 statRival.src = "Print/../../Assets/Batalla/Stat_Rival.png";
 
-const bar = new Image();
+const statThis = new Image();
+statThis.src = "Print/../../Assets/Batalla/Stat_this.png";
 
-function printBattle(pokemonObj) {
+const greenBar = new Image();
+greenBar.src = "Print/../../Assets/Batalla/Barra_green.jpg";
+
+const yellowBar = new Image();
+yellowBar.src = "Print/../../Assets/Batalla/Barra_Yellow.jpg";
+
+const redBar = new Image();
+redBar.src = "Print/../../Assets/Batalla/Barra_Red.jpg";
+
+function printBattle(pokemonEnemigo) {
 
     canvas.style.display = 'none';
     battalla.style.display = 'block'
 
+    batalla.style.backgroundColor = 'var(--gameBackground)';
     battle.clearRect(0, 0, canvas.width, canvas.height);
-    battle.drawImage(backgroundBattle, 0, 0, canvas.width, canvas.height)
+    battle.drawImage(backgroundBattle, 0, 0, canvas.width, canvas.height * 3/4)
 
-
-    // Pokemon Contrario
-
-
-    // Pantalla status
-    // Vida
     setTimeout(() => {
-        battle.drawImage(statRival, 50, 50, statRival.width * 5, statRival.height * 5);
-        printVida(pokemonObj);
+
+        // Pokemon Contrario
+
+        // Pantalla status
+        battle.drawImage(
+            statRival, 
+            50, 
+            50, 
+            statRival.width * 5, 
+            statRival.height * 5);
+
+        // Vida
+        printVida(pokemonEnemigo, 'enemigo');
 
         // Nombre
         document.fonts.ready.then(() => {
-            battle.font = "35px 'Pixelify Sans'";
-            battle.fillStyle = "grey";
-            battle.fillText(pokemonObj.nombre, 100, 110);
-        });
+            printName(pokemonEnemigo, 'enemigo');
+        }).catch(() => { // Si no se carga bien que lo vuelva a cargar
+            printName(pokemonEnemigo, 'enemigo');
+        });;
+
+        // Imprimir Pokemon Enemigo
+        printPokemon(pokemonEnemigo, 'enemigo');
+
+        // ------------------------------------------------------------------------------------------------------------s
+        // Pokemon Aliado
+        const player = new Player();
+
+        const pokemonAmigo = player.pokemonActive;
+
+
+        // Pantalla status
+        battle.drawImage(
+            statThis,
+            battalla.width - statThis.width * 5,
+            battalla.height - statThis.height * 5 - batalla.height * 1/4,
+            statThis.width * 5,
+            statThis.height * 5
+        );
+
+        // Vida
+        printVida(pokemonAmigo, 'aliado');
+
+        // Nombre
+        document.fonts.ready.then(() => {
+            printName(pokemonAmigo, 'aliado');
+        }).catch(() => { // Si no se carga bien que lo vuelva a cargar
+            printName(pokemonAmigo, 'aliado');
+        });;
+
+        // Imprimir Pokemon
+        printPokemon(pokemonAmigo, 'aliado');
     }
-        , 1500);
+        , 500);
 
 
+    // Background Mensajes
 
-    // Imprimir Pokemon
-    pokemon = pokemonObj.base;
-    battle.drawImage(
-        pokemon,
-        canvas.width / 2 + pokemon.width * 2,
-        canvas.height / 2 - pokemon.height * 2 - pokemon.height / 2,
-        pokemon.width * 4,
-        pokemon.height * 4
-    )
 
-    //Pokemon Aliado
-
-    getPokemonAliado();
 }
 
