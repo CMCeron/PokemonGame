@@ -41,12 +41,17 @@ function printVida(pokemonObj, tipo) {
 
     if (tipo == 'enemigo') {
         eval(
-            `battle.drawImage(${color}Bar, 247, 132, 235 * pokemonObj.health / 100, 12);`
+            `
+            battle.drawImage(darkBar, 247, 132, 235, 12);
+            battle.drawImage(${color}Bar, 247, 132, 235 * pokemonObj.health / 100, 12);
+            `
         )
 
     } else if (tipo == 'aliado') {
         eval(
-            `battle.drawImage(${color}Bar, batalla.width - 278, batalla.height - 219, 235 * pokemonObj.health / 100, 12);`
+            `
+            battle.drawImage(darkBar, batalla.width - 278, batalla.height - 219, 235, 12);
+            battle.drawImage(${color}Bar, batalla.width - 278, batalla.height - 219, 235 * pokemonObj.health / 100, 12);`
         )
     }
 

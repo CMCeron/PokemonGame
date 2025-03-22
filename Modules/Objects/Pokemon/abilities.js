@@ -24,12 +24,18 @@ function messageAppear(pokemonObj, n, pokemonEnemigo) {
         case 4:
             text.onclick = () => scape();
             text.innerHTML = `Has derrotado al pokemon`;
-            setTimeout(() => scape, 1000)
+            setTimeout(scape, 2000)
             break;
-        case 4:
+        case 5:
             text.onclick = () => scape();
             text.innerHTML = `Has sido derrotado`;
-            setTimeout(() => scape, 1000)
+            setTimeout(scape, 2000)
+            break;
+
+        case 6:
+            text.onclick = () => scape();
+            text.innerHTML = `No tienes vida, curate primero`;
+            setTimeout(()=>messageAppear(pokemonObj,1,pokemonEnemigo), 2000)
             break;
     }
     messages.innerHTML = "";
@@ -40,19 +46,19 @@ function messageAppear(pokemonObj, n, pokemonEnemigo) {
 function abilitiesAppear(pokemonObj, pokemonEnemigo) {
     let abilities = document.querySelector('.abilities');
     abilities.style.display = 'flex';
+    abilities.innerHTML='';
 
     pokemonObj.abilities.forEach(element => {
 
         if (element == 'Curar') {
             let text = document.createElement('p');
-            text.onclick = () => heal(pokemonObj);
+            text.onclick = () => heal(pokemonObj, pokemonEnemigo);
             text.appendChild(
                 document.createTextNode(element)
             )
 
             abilities.appendChild(text);
 
-            hurt(pokemonObj);
         } else if (element == 'Huir') {
             let text = document.createElement('p')
             text.appendChild(
@@ -63,38 +69,57 @@ function abilitiesAppear(pokemonObj, pokemonEnemigo) {
             abilities.appendChild(text);
         } else {
             let text = document.createElement('p')
-            text.onclick = () => attack(pokemonEnemigo);
+            text.onclick = () => attack(pokemonEnemigo, pokemonObj);
 
             text.appendChild(
                 document.createTextNode(element)
             )
 
             abilities.appendChild(text);
-            hurt(pokemonObj);
         }
     });
 }
 
 function hurt(pokemonObj) {
-    pokemonObj.health -= 10;
-    console.log('ALIADO'+pokemonObj.health);
+    if (pokemonObj.health < 1) {
+        pokemonObj.health = 1;
+        printVida(pokemonObj, 'aliado');
+        return;
+    }
+    num = Math.round(Math.random() * 20 - 1);
+    pokemonObj.health -= num;
+    console.log('ALIADO' + pokemonObj.health);
     // Vida
     printVida(pokemonObj, 'aliado');
 
     if (pokemonObj.health < 1) {
+        pokemonObj.health = 1;
+        printVida(pokemonObj, 'aliado');
         messageAppear(pokemonObj, 5)
     }
 }
 
-function attack(pokemonObj) {
+function attack(pokemonObj, pokemonAliado) {
+    if (pokemonAliado.health <= 1) {
+        messageAppear(pokemonAliado,6,pokemonObj);
+        return;
+    }
     pokemonObj.health -= 10;
-    console.log('ENEMIGO'+pokemonObj.health);
+    console.log('ENEMIGO' + pokemonObj.health);
     // Vida
     printVida(pokemonObj, 'enemigo');
 
     if (pokemonObj.health < 1) {
+        pokemonObj.health = 1;
+        printVida(pokemonObj, 'aliado');
         messageAppear(pokemonObj, 4)
     }
+    setTimeout(() => {
+        hurt(pokemonAliado);
+        printVida(pokemonAliado, 'aliado');
+    }, 500);
+
+
 }
 
 function scape() {
@@ -109,8 +134,16 @@ function scape() {
     canvas.style.display = 'block';
 }
 
-function heal(pokemonObj) {
+function heal(pokemonObj, pokemonEnemigo) {
     pokemonObj.health = 100;
     // Vida
     printVida(pokemonObj, 'aliado');
+
+    setTimeout(() => {
+        hurt(pokemonObj);
+        printVida(pokemonObj, 'aliado');
+    }, 500);
+
+
+
 }

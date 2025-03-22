@@ -33,12 +33,13 @@ canvas{
 }
 
 .message{
-    width: 900px;
-    display: flex;
-    justify-content: center;
+    margin: auto;
 
-    position: absolute;
-    left: 1rem;
+    width: 500px;
+    display: flex;
+
+    position: relative;
+    left: -150px;
     bottom: 140px;
     z-index: 2;
 
@@ -48,19 +49,18 @@ canvas{
 }
 
 .abilities{
+    margin: auto;
+
     width: 330px;
     height: calc(600px * 1/4px);
-    overflow: hidden;
 
     display: flex;
-    justify-items: center;
-    justify-content: center;
 
-    position: absolute;
+    position: relative;
     z-index: 3;
 
-    right: 25%;
-    bottom: 13%;
+    top: -230px;
+    right: -270px;
 
     column-gap: 60px;
     flex-flow: row wrap;

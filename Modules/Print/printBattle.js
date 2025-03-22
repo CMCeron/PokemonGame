@@ -18,6 +18,9 @@ yellowBar.src = "Print/../../Assets/Batalla/Barra_Yellow.jpg";
 const redBar = new Image();
 redBar.src = "Print/../../Assets/Batalla/Barra_Red.jpg";
 
+const darkBar = new Image();
+darkBar.src = "Print/../../Assets/Batalla/Barra_dark.jpg";
+
 const message = new Image();
 message.src = "Print/../../Assets/Batalla/History.jpg";
 
