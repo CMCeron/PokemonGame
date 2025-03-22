@@ -16,7 +16,7 @@ class Player {
 
         this.BattleStart = new Image();
 
-        this.pokemonActive = new Pokemon(2,'aliado',false);
+        this.pokemonActive = new Pokemon(2, 'aliado', ['arañazo', 'fuego', 'curar', 'huir', 'capturar'], false);
 
         //this.getPokemonActive()
 

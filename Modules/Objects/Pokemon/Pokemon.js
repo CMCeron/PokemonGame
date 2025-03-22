@@ -5,6 +5,7 @@ class Pokemon {
         this.nombre = null;
         this.shiny = shiny;
         this.tipo = tipo;
+        this.abilities = ['atacar', 'pegar', 'Curar','Huir'];
 
         this.health = 100;
 
@@ -30,7 +31,7 @@ class Pokemon {
                     resolve();
                 },
                 error: (xhr, status, error) => {
-                    reject(new Error("Error en la llamada AJAX: " + status + " " + error));
+                    reject(new Error("Error en la llamada AJAX de getname: " + status + " " + error));
                 }
             })
         })

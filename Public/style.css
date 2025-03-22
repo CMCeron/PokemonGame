@@ -27,10 +27,52 @@ canvas{
     display: block;
     margin: 20px auto;
 }
-#blur{
-    filter: blur(10);
-}
 
 #batalla{
+    display: none;
+}
+
+.message{
+    width: 900px;
+    display: flex;
+    justify-content: center;
+
+    position: absolute;
+    left: 1rem;
+    bottom: 140px;
+    z-index: 2;
+
+    font-family: 'Pixelify Sans';
+    font-size: 1.5rem;
+    color: white;
+}
+
+.abilities{
+    width: 330px;
+    height: calc(600px * 1/4px);
+    overflow: hidden;
+
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+
+    position: absolute;
+    z-index: 3;
+
+    right: 25%;
+    bottom: 13%;
+
+    column-gap: 60px;
+    flex-flow: row wrap;
+    flex-direction: row;
+
+
+    font-family: 'Pixelify Sans';
+    font-size: 1.5rem;
+    line-height: 0.5rem;
+    color: black;
+}
+
+.message, .abilities{
     display: none;
 }

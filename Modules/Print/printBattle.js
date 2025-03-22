@@ -106,6 +106,8 @@ function printBattle(pokemonEnemigo) {
             batalla.width * 2/4,
             batalla.height * 1 / 4
         );
+
+        messageAppear(pokemonAmigo, 1, pokemonEnemigo);
     }
         , 500);
 
