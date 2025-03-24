@@ -111,12 +111,12 @@ function attack(pokemonObj, pokemonAliado) {
 
     if (pokemonObj.health < 1) {
         pokemonObj.health = 1;
-        printVida(pokemonObj, 'aliado');
+        printVida(pokemonObj, 'enemigo');
         messageAppear(pokemonObj, 4)
+        return;
     }
     setTimeout(() => {
         hurt(pokemonAliado);
-        printVida(pokemonAliado, 'aliado');
     }, 500);
 
 
