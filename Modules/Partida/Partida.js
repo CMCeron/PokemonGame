@@ -1,57 +1,72 @@
 class Partida {
-    constructor(activePokemon) {
-        userID = this.getUserID;
+    constructor(x, y, activePokemon) {
+        this.userID = null;
 
-        PositionX = x;
-        positionY = y;
+        this.PositionX = x;
+        this.PositionY = y;
 
-        activePokemon = activePokemon;
+        this.activePokemon = activePokemon;
 
+        this.getUserID();
     }
 
     getUserID() {
         $.ajax({
             url: 'http://localhost/PokemonGame/Modules/Partida/getUserID.php',
             method: 'get',
-            success: (data, status) => {
+            success: (data) => {
                 this.userID = data;
+                this.loadData();
             }
         })
     }
 
     loadData() {
-        $.ajax({
-            url: 'http://localhost/PokemonGame/Modules/Partida/getUserID.php',
-            method: 'get',
-            success: (data, status) => {
-                this.userID, this.PositionX, this.PositionY, this.activePokemon = { ...data };
-            }
-        })
+        if (this.userID) {
+            $.ajax({
+                url: 'http://localhost/PokemonGame/Modules/Partida/cargarPartida.php',
+                method: 'post',
+                data: { userID: this.userID },
+                success: (data) => {
+                    if (data) {
+                        try {
+                            console.log(data);
+                            this.PositionX = data.positionX;
+                            this.PositionY = data.positionY;
+                            this.activePokemon = JSON.parse(data.activePokemon);
+                        } catch (error) {
+                            console.error('Error al parsear los datos JSON:', error);
+                        }
+                    }
+
+                },
+                error: (jqXHR, textStatus, errorThrown) => {
+                    console.error('Error en la petición AJAX de partida:', textStatus, errorThrown);
+                }
+            })
+        }
     }
 
     saveData() {
-        this.reload();
+        console.log(this.PositionX, this.PositionY, this.activePokemon);
         $.ajax({
-            url: 'http://localhost/PokemonGame/Modules/Partida/getUserID.php',
+            url: 'http://localhost/PokemonGame/Modules/Partida/guardarPartida.php',
             method: 'post',
             data: {
                 userID: this.userID,
-
                 PositionX: this.PositionX,
                 PositionY: this.PositionY,
-
-                activePokemon: this.activePokemon
+                activePokemon: JSON.stringify(this.activePokemon)
             },
-            success: (data, status) => {
+            success: (data) => {
                 alert(data);
             }
         })
     }
 
-    reload(PositionX, positionY, activePokemon) {
-        this.positionY = positionY;
-        this.positionX = positionX;
+    reload(positionX, positionY, activePokemon) {
+        this.PositionY = positionY;
+        this.PositionX = positionX;
         this.activePokemon = activePokemon;
     }
 }
-

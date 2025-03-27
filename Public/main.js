@@ -5,9 +5,6 @@ const ctx = canvas.getContext("2d", { willReadFrequently: true });
 const batalla = document.querySelector('#batalla');
 const battle = batalla.getContext("2d", { willReadFrequently: true })
 
-let x = -930;
-let y = -800;
-
 // PLAYER
 const sheet = new Player();
 const player = sheet.walk;
@@ -30,78 +27,104 @@ tree.src = '../Assets/Map/Berry_Forest_Trees.png'
 const grass = new Image();
 grass.src = '../Assets/Map/grass.png';
 
-if (batalla.style.display == 'block') {
-    canvas.style.display = 'none';
+// PARTIDA 
 
+const partida = new Partida();
+
+let x,y;
+
+setTimeout(()=>{
+    
+    // GUARDAR PARTIDA
+    const guardar = document.querySelector('button');
+    guardar.onclick = ()=>{
+        partida.reload(x,y,sheet.pokemonActive);
+        partida.saveData();
+    };
+    
+        if(!partida.PositionX || !partida.PositionY){
+            partida.PositionX = -930;
+            partida.PositionY = -800;
+        }
+        
+        x = partida.PositionX;
+        y = partida.PositionY;
+    
+    if (batalla.style.display == 'block') {
+        canvas.style.display = 'none';
+    
+        document.addEventListener('keydown', function (event) {
+            switch (event.key) {
+    
+                case 'ArrowUp':
+                case 'w':
+                    selectUp();
+                    break;
+    
+                case 'ArrowDown':
+                case 's':
+                    selectDown();
+                    break;
+    
+                case 'ArrowRight':
+                case 'd':
+                    selectRight();
+                    break;
+    
+                case 'ArrowLeft':
+                case 'a':
+                    selectLeft();
+                    break;
+    
+                case 'tab':
+                    jump();
+                    break;
+    
+                case 'Enter':
+                    selectOption();
+                    break;
+            }
+        })
+    
+    }
+    
+    
     document.addEventListener('keydown', function (event) {
-        switch (event.key) {
-
-            case 'ArrowUp':
-            case 'w':
-                selectUp();
-                break;
-
-            case 'ArrowDown':
-            case 's':
-                selectDown();
-                break;
-
-            case 'ArrowRight':
-            case 'd':
-                selectRight();
-                break;
-
-            case 'ArrowLeft':
-            case 'a':
-                selectLeft();
-                break;
-
-            case 'tab':
-                jump();
-                break;
-
-            case 'Enter':
-                selectOption();
-                break;
+        if (canvas.style.display == '' || canvas.style.display == 'block') { // Si esta el juego principal
+            switch (event.key) {
+    
+                case 'ArrowUp':
+                case 'w':
+                    movePlayer(0, 5);
+                    andarArriba();
+                    draw();
+                    break;
+                case 'ArrowDown':
+                case 's':
+                    movePlayer(0, -5);
+                    andarAbajo();
+                    draw();
+                    break;
+    
+                case 'ArrowRight':
+                case 'd':
+                    movePlayer(-5, 0);
+                    andarDerecha();
+                    draw();
+                    break;
+    
+                case 'ArrowLeft':
+                case 'a':
+                    movePlayer(5, 0);
+                    andarIzquierda();
+                    draw();
+                    break;
+            }
         }
     })
+    
+},200)    
 
-}
-
-
-document.addEventListener('keydown', function (event) {
-    if (canvas.style.display == '' || canvas.style.display == 'block') { // Si esta el juego principal
-        switch (event.key) {
-
-            case 'ArrowUp':
-            case 'w':
-                movePlayer(0, 5);
-                andarArriba();
-                draw();
-                break;
-            case 'ArrowDown':
-            case 's':
-                movePlayer(0, -5);
-                andarAbajo();
-                draw();
-                break;
-
-            case 'ArrowRight':
-            case 'd':
-                movePlayer(-5, 0);
-                andarDerecha();
-                draw();
-                break;
-
-            case 'ArrowLeft':
-            case 'a':
-                movePlayer(5, 0);
-                andarIzquierda();
-                draw();
-                break;
-        }
-    }
-})
 if (canvas.style.display == '' || canvas.style.display == 'block') { // Si esta el juego principal
     let w;
     // Cargar imágenes antes de dibujar
@@ -117,4 +140,3 @@ if (canvas.style.display == '' || canvas.style.display == 'block') { // Si esta 
         }
     }
 }
-

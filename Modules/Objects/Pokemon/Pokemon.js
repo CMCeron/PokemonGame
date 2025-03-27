@@ -1,5 +1,7 @@
 class Pokemon {
-    constructor(id, tipo, shiny) {
+    constructor(id, tipo, shiny, health=100) {
+        this.id = id;
+
         this.src = 'Pokemon/../../Assets/Pokemons/';
 
         this.nombre = null;
@@ -7,7 +9,7 @@ class Pokemon {
         this.tipo = tipo;
         this.abilities = ['atacar', 'pegar', 'Curar','Huir'];
 
-        this.health = 100;
+        this.health = health;
 
         this.huella = new Image();
         this.mini = new Image();

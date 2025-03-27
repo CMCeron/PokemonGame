@@ -27,7 +27,18 @@ message.src = "Print/../../Assets/Batalla/History.jpg";
 const abilities = new Image();
 abilities.src = "Print/../../Assets/Batalla/Select_Abilities.png";
 
+
+
 function printBattle(pokemonEnemigo) {
+
+    const pokemonAmigo = new Pokemon(
+        partida.activePokemon.id, 
+        partida.activePokemon.tipo, 
+        partida.activePokemon.shiny, 
+        partida.activePokemon.health
+    );
+    
+    console.log(pokemonAmigo);
 
     canvas.style.display = 'none';
     batalla.style.display = 'block'
@@ -64,10 +75,7 @@ function printBattle(pokemonEnemigo) {
         // ------------------------------------------------------------------------------------------------------------s
 
 
-        console.log(sheet.pokemonActive.nombre);
-        const pokemonAmigo = sheet.pokemonActive;
-
-
+        //console.log(pokemonAmigo.pokemonActive.nombre);
 
         // Pantalla status
         battle.drawImage(
@@ -104,9 +112,9 @@ function printBattle(pokemonEnemigo) {
         // Background Selección de Habilidades
         battle.drawImage(
             abilities,
-            batalla.width * 2/4,
+            batalla.width * 2 / 4,
             batalla.height * 3 / 4,
-            batalla.width * 2/4,
+            batalla.width * 2 / 4,
             batalla.height * 1 / 4
         );
 

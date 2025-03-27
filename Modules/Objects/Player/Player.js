@@ -16,7 +16,7 @@ class Player {
 
         this.BattleStart = new Image();
 
-        this.pokemonActive = new Pokemon(2, 'aliado', ['arañazo', 'fuego', 'curar', 'huir', 'capturar'], false);
+        this.pokemonActive = new Pokemon(2, 'aliado', false);
 
         //this.getPokemonActive()
 
@@ -28,7 +28,6 @@ class Player {
             url: 'http://localhost/PokemonGame/Modules/Objects/Player/GetPlayer.php',
             method: 'get',
             success: (data) => {
-                data = JSON.parse(data)
                 this.pokemonActive = new Pokemon(...data);
             }
         })

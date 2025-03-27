@@ -1,7 +1,7 @@
 <?php
+session_start();
 $url = 'C:\xampp\htdocs\PokemonGame\Modules\ConnectBD\conexion.php';
 include($url);
-session_start();
 $_SESSION['user'] = ['nombre' => 'Clemen'];
 
 try {
@@ -14,6 +14,4 @@ try {
     echo "Error" . $e->getMessage();
 }
 
-foreach ($sheet as $gender) {
-    echo $gender['genero'];
-}
+echo $sheet[0]['IDusuario'];
