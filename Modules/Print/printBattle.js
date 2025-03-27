@@ -30,14 +30,20 @@ abilities.src = "Print/../../Assets/Batalla/Select_Abilities.png";
 
 
 function printBattle(pokemonEnemigo) {
+    let pokemonAmigo;
+    if(partida.activePokemon){
+        pokemonAmigo= new Pokemon(
+            partida.activePokemon.id, 
+            partida.activePokemon.tipo, 
+            partida.activePokemon.shiny, 
+            partida.activePokemon.health
+        );
+    }else{
+        pokemonAmigo = sheet.pokemonActive;
+    }
 
-    const pokemonAmigo = new Pokemon(
-        partida.activePokemon.id, 
-        partida.activePokemon.tipo, 
-        partida.activePokemon.shiny, 
-        partida.activePokemon.health
-    );
     
+
     console.log(pokemonAmigo);
 
     canvas.style.display = 'none';
