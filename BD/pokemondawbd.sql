@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-03-2025 a las 15:55:26
+-- Tiempo de generación: 27-03-2025 a las 18:14:16
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -42,10 +42,7 @@ INSERT INTO `ataques` (`IDataque`, `nombre`, `daño`, `tipo`) VALUES
 (1, 'Arañazo', 20, 'normal'),
 (2, 'Placaje', 50, 'normal'),
 (3, 'Derribo', 10, 'normal'),
-(4, 'Doble filo', 50, 'normal'),
-(5, 'Rayo solar', 30, 'planta'),
-(6, 'Pistola agua', 50, 'agua'),
-(7, 'Llamarada', 50, 'fuego');
+(4, 'Doble filo', 50, 'normal');
 
 -- --------------------------------------------------------
 
@@ -54,10 +51,11 @@ INSERT INTO `ataques` (`IDataque`, `nombre`, `daño`, `tipo`) VALUES
 --
 
 CREATE TABLE `partida` (
-  `IDusuario` int(11) NOT NULL,
-  `posicionX` int(11) NOT NULL,
-  `posicionY` int(11) NOT NULL,
-  `pokedex` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`pokedex`))
+  `IDPartida` int(20) NOT NULL,
+  `userID` int(20) NOT NULL,
+  `pokemonActive` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `positionX` int(11) NOT NULL,
+  `positionY` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -109,7 +107,7 @@ ALTER TABLE `ataques`
 -- Indices de la tabla `partida`
 --
 ALTER TABLE `partida`
-  ADD PRIMARY KEY (`IDusuario`);
+  ADD PRIMARY KEY (`IDPartida`);
 
 --
 -- Indices de la tabla `pokemons`
@@ -134,6 +132,12 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `ataques`
   MODIFY `IDataque` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT de la tabla `partida`
+--
+ALTER TABLE `partida`
+  MODIFY `IDPartida` int(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `pokemons`
