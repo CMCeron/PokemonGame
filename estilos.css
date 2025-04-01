@@ -1,0 +1,195 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: url('https://moewalls.com/wp-content/uploads/2023/02/pokemon-emerald-waterfall-pixel-thumb.jpg') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    transition: background 1s ease;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://moewalls.com/wp-content/uploads/2023/02/pokemon-emerald-waterfall-pixel-thumb.jpg') no-repeat center center/cover;
+    z-index: 10;
+    transition: opacity 1.5s ease-out;
+}
+
+.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.container {
+    text-align: center;
+    position: relative;
+    z-index: 20;
+    animation: fadeIn 2s ease;
+}
+
+.card {
+    background: rgba(230, 249, 230, 0.9);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    height: fit-content;
+    overflow: hidden;
+    animation: height 2s ease;
+    animation: slideIn 2s ease;
+}
+
+h1 {
+    color: #2E7D32;
+    font-size: 24px;
+    margin: 0;
+    font-weight: bold;
+}
+
+p {
+    color: #2E7D32;
+    font-size: 14px;
+    margin: 10px 0 20px;
+    line-height: 1.5;
+}
+
+.tabs {
+    display: flex;
+    margin-bottom: 15px;
+    background: #A5D6A7;
+    border-radius: 10px;
+    overflow: hidden;
+    width: calc(100% - 20px);
+    margin: auto;
+}
+
+.tab-button {
+    flex: 1;
+    background: transparent;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    transition: background 0.5s, opacity 0.5s ease-in-out;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.tab-button.active {
+    background: #2E7D32;
+    color: white;
+}
+
+.tab-content {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease, transform 1s ease;
+    width: 100%;
+}
+
+.tab-content.active {
+    position: static;
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group {
+    position: relative;
+    margin: 10px 0;
+}
+
+.input-group input {
+    width: calc(100% - 20px);
+    padding: 12px;
+    border: 1px solid #A5D6A7;
+    border-radius: 4px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.input-group input:focus {
+    border-color: #2E7D32;
+}
+
+.input-group label {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-100%);
+    pointer-events: none;
+    transition: top 0.3s ease, font-size 0.3s ease, color 0.3s ease;
+    font-size: 14px;
+    color: #A5D6A7;
+}
+
+.input-group input:focus+label,
+.input-group input:not(:placeholder-shown)+label {
+    top: -10px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #2E7D32;
+}
+
+.input-group:first-child {
+    margin-top: 20px;
+}
+
+.submit-button {
+    background: #2E7D32;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.submit-button:hover {
+    background: #1B5E20;
+}
+
+.error-message {
+    font-weight: bold;
+    color: orange;
+    font-size: 12px;
+    margin-top: 5px;
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
