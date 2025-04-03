@@ -79,7 +79,7 @@ function printBattle(pokemonEnemigo) {
         // Imprimir Pokemon Enemigo
         printPokemon(pokemonEnemigo, 'enemigo');
 
-        // ------------------------------------------------------------------------------------------------------------s
+        // ------------------------------------------------------------------------------------------------------------
 
 
         //console.log(pokemonAmigo.pokemonActive.nombre);
