@@ -6,9 +6,17 @@ session_start();
 
 if ($_POST) {
 
-    if (!empty($_POST['email']) && !empty($_POST['password'])) {
+    if (
+        !empty($_POST['username']) 
+        && !empty($_POST['email-reg'])
+        && !empty($_POST['password-reg'])
+    ) {
 
-        $user = ['email' => $_POST['email'], 'password' => $_POST['password']];
+        $user = [
+            'email' => $_POST['email-reg'], 
+            'password' => $_POST['password-reg'], 
+            'username' => $_POST['username']
+        ];
 
         try {
             $consulta = 'SELECT nombre FROM usuarios WHERE email=:email AND contrasena=:contra';
@@ -26,11 +34,10 @@ if ($_POST) {
             } else {
                 echo "No se encuentra el usuario.";
             }
-
         } catch (Exception $e) {
             echo "Error" . $e->getMessage();
         }
-    }else{
+    } else {
         echo 'Rellena los campos';
     }
 }

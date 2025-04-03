@@ -2,7 +2,6 @@
 session_start();
 $url = 'C:\xampp\htdocs\PokemonGame\Modules\ConnectBD\conexion.php';
 include($url);
-$_SESSION['user'] = ['nombre' => 'Clemen'];
 
 try {
     $consulta = 'SELECT IDusuario FROM usuarios WHERE nombre=:nombre';

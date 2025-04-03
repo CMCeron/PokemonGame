@@ -2,7 +2,6 @@
 $url = 'C:\xampp\htdocs\PokemonGame\Modules\ConnectBD\conexion.php';
 include($url);
 session_start();
-$_SESSION['user'] = ['nombre'=>'Clemen'];
 
 try {
     $consulta = 'SELECT pokemonActive FROM partida WHERE nombre=:nombre ORDER BY IDPartida LIMIT 1';

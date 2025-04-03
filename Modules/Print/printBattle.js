@@ -31,6 +31,7 @@ abilities.src = "Print/../../Assets/Batalla/Select_Abilities.png";
 
 function printBattle(pokemonEnemigo) {
     let pokemonAmigo;
+    
     if(partida.activePokemon){
         pokemonAmigo= new Pokemon(
             partida.activePokemon.id, 
@@ -125,8 +126,10 @@ function printBattle(pokemonEnemigo) {
         );
 
         messageAppear(pokemonAmigo, 1, pokemonEnemigo);
+
     }
         , 500);
+        
 
 }
 
