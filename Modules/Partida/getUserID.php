@@ -6,7 +6,7 @@ include($url);
 try {
     $consulta = 'SELECT IDusuario FROM usuarios WHERE nombre=:nombre';
     $sql = $conn->prepare($consulta);
-    $sql->bindParam(":nombre", $_SESSION["user"]["nombre"]);
+    $sql->bindParam(":nombre", $_SESSION["user"]["username"]);
     $sql->execute();
     $sheet = $sql->fetchAll(PDO::FETCH_ASSOC);
 } catch (Exception $e) {

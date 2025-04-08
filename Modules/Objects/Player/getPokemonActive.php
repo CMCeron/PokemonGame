@@ -6,7 +6,7 @@ session_start();
 try {
     $consulta = 'SELECT pokemonActive FROM partida WHERE nombre=:nombre ORDER BY IDPartida LIMIT 1';
     $sql = $conn->prepare($consulta);
-    $sql->bindParam(":nombre", $_SESSION["user"]["nombre"]);
+    $sql->bindParam(":nombre", $_SESSION["user"]["username"]);
     $sql->execute();
     $pokemon = $sql->fetchAll(PDO::FETCH_ASSOC);
 } catch (Exception $e) {

@@ -1,13 +1,13 @@
 class Pokemon {
-    constructor(id, tipo, shiny, health=100) {
+    constructor(id, tipo, shiny, health = 100) {
         this.id = id;
 
-        this.src = 'Pokemon/../../Assets/Pokemons/';
+        this.src = 'http://localhost/PokemonGame/Assets/Pokemons/';
 
         this.nombre = null;
         this.shiny = shiny;
         this.tipo = tipo;
-        this.abilities = ['atacar', 'pegar', 'Curar','Huir'];
+        this.abilities = ['atacar', 'pegar', 'Curar', 'Huir'];
 
         this.health = health;
 
@@ -40,10 +40,7 @@ class Pokemon {
     }
 
     loadImages() {
-            if(this.nombre) {
-            this.huella.src = `${this.src + this.nombre}_Huella.png`;
-            this.mini.src = `${this.src + this.nombre}_Mini.png`;
-
+        if (this.nombre) {
             if (this.shiny) {
                 this.base.src = this.getTipo() + '_Shiny.png';
             } else {

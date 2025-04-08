@@ -1,11 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Registro</title>
+    <link rel="stylesheet" href="registro.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script src="../Objects/Pokemon/Pokemon.js"></script>
 </head>
+
 <body>
-    
+
+    <img class="fondo player" src="../../Assets/Player/B_Standing.png" alt="Personaje en grande">
+    <img class="fondo pokemon" src="../../Assets/Pokemons/Bulbasur.png" alt="Pokemon en grande">
+
+    <div class="card">
+        <h1>Antes de seguir con la aventura debes completar algunos cambios:</h1>
+        <form id="registrationForm">
+            <div class="columns">
+                <div class="sexo">
+                    <h2>Sexo:</h2>
+                    <button type="button" class="active" onclick="selectSexo(this)">Chico</button>
+                    <button type="button" class="" onclick="selectSexo(this)">Chica</button><br>
+                    <img src="../../Assets/Player/B_Standing.png" id="playerImg" alt="Foto de personaje">
+                </div>
+                <div class="pokemon-inicial">
+                    <h2>Pokemon inicial</h2>
+                    <p>¡¡Elije el pokemon con el que vas a ir de aventuras!!</p>
+                    <div class="container">
+                        <div class="pokemonOpt active" onclick="selectPokemon(this)">
+                            <img src="../../Assets/Pokemons/Bulbasur.png" alt="Imagen de pokemon Bulbasur">
+                            <p>Bulbasur</p>
+                        </div>
+                        <div class="pokemonOpt" onclick="selectPokemon(this)">
+                            <img src="../../Assets/Pokemons/Squirtle.png" alt="Imagen de pokemon Squirtle">
+                            <p>Squirtle</p>
+                        </div>
+                        <div class="pokemonOpt" onclick="selectPokemon(this)">
+                            <img src="../../Assets/Pokemons/Charmander.png" alt="Imagen de pokemon Charmander">
+                            <p>Charmander</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+
+    <div class="message">¡Tu aventura comienza!</div>
+
+    <script src="register2.js"></script>
+
 </body>
+
 </html>

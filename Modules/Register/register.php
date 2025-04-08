@@ -4,40 +4,64 @@ $url = 'C:\xampp\htdocs\PokemonGame\Modules\ConnectBD\conexion.php';
 include($url);
 session_start();
 
+
 if ($_POST) {
 
+    $response = [
+        'success' => false,
+        'message' => 'Ha habido un error.'
+    ];
+
     if (
-        !empty($_POST['username']) 
-        && !empty($_POST['email-reg'])
-        && !empty($_POST['password-reg'])
+        !empty($_POST['username'])
+        && !empty($_POST['emailReg'])
+        && !empty($_POST['passwordReg'])
     ) {
 
-        $user = [
-            'email' => $_POST['email-reg'], 
-            'password' => $_POST['password-reg'], 
-            'username' => $_POST['username']
-        ];
-
         try {
-            $consulta = 'SELECT nombre FROM usuarios WHERE email=:email AND contrasena=:contra';
+            // Comprobar no repetir el nombre de usuario
+            $consulta = 'SELECT * FROM usuarios WHERE nombre=:username';
             $sql = $conn->prepare($consulta);
-            $sql->bindParam(":email", $user["email"]);
-            $sql->bindParam(":contra", $user["password"]);
+            $sql->bindParam(":username", $_POST['username']);
             $sql->execute();
-            $result = $sql->fetchAll(PDO::FETCH_ASSOC);
 
+            if ($sql->rowCount() < 2) {
+                // Comprobar no repetir el correo
+                $consulta = 'SELECT * FROM usuarios WHERE correo=:emailReg';
+                $sql = $conn->prepare($consulta);
+                $sql->bindParam(":emailReg", $_POST['emailReg']);
+                $sql->execute();
 
-            if (!empty($result[0]['nombre'])) {
-                $_SESSION['user'] = ['nombre' => $result[0]['nombre']];
+                echo 'si';
+                if ($sql->rowCount() < 2) {
+                    $user = [
+                        'email' => $_POST['emailReg'],
+                        'password' => $_POST['passwordReg'],
+                        'username' => $_POST['username']
+                    ];
 
-                echo 'success';
+                    $_SESSION['user'] = [...$user];
+
+                    $response = [
+                        'success' => true,
+                        'message' => 'Registro exitoso.'
+                    ];
+                } else {
+                    $response['message'] = 'Email repetido';
+                }
             } else {
-                echo "No se encuentra el usuario.";
+                $response = [
+                    'success' => false,
+                    'message' => 'Nombre de usario repetido.'
+                ];
             }
         } catch (Exception $e) {
-            echo "Error" . $e->getMessage();
         }
     } else {
-        echo 'Rellena los campos';
+        $response = [
+            'success' => false,
+            'message' => 'Rellena todos los campos.'
+        ];
     }
+    echo json_encode($response);
 }

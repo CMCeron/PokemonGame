@@ -1,20 +1,21 @@
 vacio = 0;
 
 function contrasenaIgual(c1, c2) {
-    if(isEmpty(c2)||isEmpty(c1)){
+    let spanError = c2.nextElementSibling.nextElementSibling;
+    if (isEmpty(c2) || isEmpty(c1)) {
         return;
     }
     if (c1.value == c2.value) {
         spanError.innerHTML = "";
         return true
-    }else{
-        let spanError = c2.nextElementSibling.nextElementSibling;
+    } else {
         spanError.innerHTML = 'Las contraseñas deben de ser iguales';
         return false;
     }
 }
 
 function enviarRegistro(e) {
+    vacio = 0;
     e.preventDefault();
 
     isEmpty(document.querySelector('#username'));
@@ -25,23 +26,29 @@ function enviarRegistro(e) {
     if (!contrasenaIgual(
         document.querySelector('#password-reg'),
         document.querySelector('#password-reg2'))
-    ){
+    ) {
         return;
     }
 
     if (vacio == 0) {
-        let email = $('#email')[0].value;
-        let pw = $('#pw')[0].value;
+        /* let email = ;
+        let username = ;
+        let pw = ; */
 
         $.ajax({
             url: 'http://localhost/PokemonGame/Modules/Register/register.php',
             method: 'post',
-            data: { email: email, password: pw },
+            data: {
+                username: $('#username')[0].value,
+                emailReg: $('#email-reg')[0].value,
+                passwordReg: $('#password-reg')[0].value,
+            },
             success: (data) => {
-                if (data == 'success') {
+                data = JSON.parse(data);
+                if (data.success) {
                     window.location.href = 'http://localhost/PokemonGame/Modules/Register/registro.html';
                 } else {
-                    alert(data);
+                    alert(data[1]);
                 }
             },
             error: (error) => {
@@ -50,7 +57,5 @@ function enviarRegistro(e) {
             }
         });
     }
-
-    vacio = 0;
 
 }

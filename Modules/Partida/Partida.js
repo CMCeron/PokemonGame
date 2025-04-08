@@ -21,6 +21,32 @@ class Partida {
         })
     }
 
+    newUser() {
+        if (this.userID) {
+            $.ajax({
+                url: 'http://localhost/PokemonGame/Modules/Partida/nuevoUsuario.php',
+                method: 'post',
+                data: { userID: this.userID },
+                success: (data) => {
+                    if (data) {
+                        try {
+                            console.log(data);
+                            this.PositionX = -930;
+                            this.PositionY = -800;
+                            this.activePokemon = JSON.parse(data.activePokemon);
+                        } catch (error) {
+                            console.error('Ha habido un error:');
+                        }
+                    }
+
+                },
+                error: (jqXHR, textStatus, errorThrown) => {
+                    console.error('Error en la petición AJAX de partida:', textStatus, errorThrown);
+                }
+            })
+        }
+    }
+
     loadData() {
         if (this.userID) {
             $.ajax({
@@ -28,6 +54,10 @@ class Partida {
                 method: 'post',
                 data: { userID: this.userID },
                 success: (data) => {
+                    if(data == 'error: No se encontraron partidas para el usuario especificado.'){
+                        this.newUser();
+                        return;
+                    }
                     if (data) {
                         try {
                             console.log(data);
@@ -35,7 +65,6 @@ class Partida {
                             this.PositionY = data.positionY;
                             this.activePokemon = JSON.parse(data.activePokemon);
                         } catch (error) {
-                            console.error('Error al parsear los datos JSON:', error);
                         }
                     }
 

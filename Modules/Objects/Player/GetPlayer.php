@@ -6,15 +6,13 @@ session_start();
 try {
     $consulta = 'SELECT genero FROM usuarios WHERE nombre=:nombre';
     $sql = $conn->prepare($consulta);
-    $sql->bindParam(":nombre", $_SESSION["user"]["nombre"]);
+    $sql->bindParam(":nombre", $_SESSION["user"]["username"]);
     $sql->execute();
     $sheet = $sql->fetchAll(PDO::FETCH_ASSOC);
 } catch (Exception $e) {
     echo "Error" . $e->getMessage();
 }
 
-foreach ($sheet as $gender) {
-    echo $gender['genero'];
-}
+    echo $sheet[0]['genero'];
 
 ?>

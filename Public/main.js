@@ -31,68 +31,68 @@ grass.src = '../Assets/Map/grass.png';
 
 const partida = new Partida();
 
-let x,y;
+let x, y;
 
-setTimeout(()=>{
-    
+setTimeout(() => {
+
     // GUARDAR PARTIDA
     const guardar = document.querySelector('button');
-    guardar.onclick = ()=>{
-        partida.reload(x,y,sheet.pokemonActive);
+    guardar.onclick = () => {
+        partida.reload(x, y, sheet.pokemonActive);
         partida.saveData();
     };
-    
-        if(!partida.PositionX || !partida.PositionY){
-            partida.PositionX = -930;
-            partida.PositionY = -800;
-        }
-        
-        x = partida.PositionX;
-        y = partida.PositionY;
-    
+
+    if (!partida.PositionX || !partida.PositionY) {
+        partida.PositionX = -930;
+        partida.PositionY = -800;
+    }
+
+    x = partida.PositionX;
+    y = partida.PositionY;
+
     if (batalla.style.display == 'block') {
         canvas.style.display = 'none';
-    
+
         document.addEventListener('keydown', function (event) {
             switch (event.key) {
-    
+
                 case 'ArrowUp':
                 case 'w':
                     selectUp();
                     break;
-    
+
                 case 'ArrowDown':
                 case 's':
                     selectDown();
                     break;
-    
+
                 case 'ArrowRight':
                 case 'd':
                     selectRight();
                     break;
-    
+
                 case 'ArrowLeft':
                 case 'a':
                     selectLeft();
                     break;
-    
+
                 case 'tab':
                     jump();
                     break;
-    
+
                 case 'Enter':
                     selectOption();
                     break;
             }
         })
-    
+
     }
-    
-    
+
+
     document.addEventListener('keydown', function (event) {
         if (canvas.style.display == '' || canvas.style.display == 'block') { // Si esta el juego principal
             switch (event.key) {
-    
+
                 case 'ArrowUp':
                 case 'w':
                     movePlayer(0, 5);
@@ -105,14 +105,14 @@ setTimeout(()=>{
                     andarAbajo();
                     draw();
                     break;
-    
+
                 case 'ArrowRight':
                 case 'd':
                     movePlayer(-5, 0);
                     andarDerecha();
                     draw();
                     break;
-    
+
                 case 'ArrowLeft':
                 case 'a':
                     movePlayer(5, 0);
@@ -122,8 +122,8 @@ setTimeout(()=>{
             }
         }
     })
-    
-},200)    
+
+}, 200)
 
 if (canvas.style.display == '' || canvas.style.display == 'block') { // Si esta el juego principal
     let w;
