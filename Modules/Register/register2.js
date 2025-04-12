@@ -90,3 +90,17 @@ document.getElementById('registrationForm').addEventListener('submit', function 
         }
     });
 });
+
+
+// Cojer nombre de usuario
+$.ajax({
+    url: 'http://localhost/PokemonGame/Modules/Register/username.php',
+    method: 'get',
+    success: (data) => {
+        document.querySelector('span.username').innerHTML = data;
+    },
+    error: (error) => {
+        console.error('Error:', error);
+        alert('Error al crear la cuenta, vuelva a intentarlo');
+    }
+});

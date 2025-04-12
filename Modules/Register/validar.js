@@ -31,9 +31,6 @@ function enviarRegistro(e) {
     }
 
     if (vacio == 0) {
-        /* let email = ;
-        let username = ;
-        let pw = ; */
 
         $.ajax({
             url: 'http://localhost/PokemonGame/Modules/Register/register.php',
@@ -48,7 +45,7 @@ function enviarRegistro(e) {
                 if (data.success) {
                     window.location.href = 'http://localhost/PokemonGame/Modules/Register/registro.html';
                 } else {
-                    alert(data[1]);
+                    alert(data.message);
                 }
             },
             error: (error) => {
