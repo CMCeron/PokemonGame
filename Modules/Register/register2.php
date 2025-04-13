@@ -18,11 +18,11 @@ if ($_POST) {
     if (empty($sexo) || empty($pokemon)) {
         $response['message'] = 'Por favor, completa todos los campos.';
     } else {
-        // Añadir esos campos a la sesión
         if($_SESSION['user']['username'] == 'Ponce'){
             $sexo = 'Ponce';
         }
-
+        
+        // Añadir esos campos a la sesión
         $_SESSION["user"] += [
             'sexo' => $sexo,
             'pokemon' => $pokemon
@@ -31,8 +31,6 @@ if ($_POST) {
         // Si todo está bien, establecer el éxito y un mensaje de éxito
         $response['success'] = true;
         $response['message'] = 'Formulario enviado correctamente. Sexo: ' . $sexo . ', Pokémon: ' . $pokemon;
-
-        // Aquí puedes realizar más acciones, como guardar los datos en una base de datos
 
         try {
             $consulta = 'INSERT INTO usuarios (nombre, genero, email, contrasena) VALUES (:nombre, :genero, :email, :contrasena)';

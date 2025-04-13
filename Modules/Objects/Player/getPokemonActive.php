@@ -4,7 +4,7 @@ include($url);
 session_start();
 
 try {
-    $consulta = 'SELECT pokemonActive FROM partida WHERE nombre=:nombre ORDER BY IDPartida LIMIT 1';
+    $consulta = 'SELECT pokemonActive FROM partida JOIN userID WHERE usuarios.nombre = :nombre ORDER BY IDPartida LIMIT 1';
     $sql = $conn->prepare($consulta);
     $sql->bindParam(":nombre", $_SESSION["user"]["username"]);
     $sql->execute();
@@ -14,7 +14,7 @@ try {
 }
 
 foreach ($pokemon as $poke) {
-    echo $poke['genero'];
+    echo $poke['pokemonActive'];
 }
 
 ?>

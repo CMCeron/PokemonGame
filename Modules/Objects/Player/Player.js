@@ -16,16 +16,15 @@ class Player {
 
         this.BattleStart = new Image();
 
-        this.pokemonActive = new Pokemon(2, 'aliado', false);
+        this.pokemonActive = null;
 
-        //this.getPokemonActive()
-
+        this.getPokemonActive()
         this.getGender();
     }
 
     getPokemonActive() {
         $.ajax({
-            url: 'http://localhost/PokemonGame/Modules/Objects/Player/GetPlayer.php',
+            url: 'http://localhost/PokemonGame/Modules/Objects/Player/getPokemonActive.php',
             method: 'get',
             success: (data) => {
                 this.pokemonActive = new Pokemon(...data);

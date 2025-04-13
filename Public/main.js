@@ -31,6 +31,7 @@ grass.src = '../Assets/Map/grass.png';
 
 const partida = new Partida();
 
+
 let x, y;
 
 setTimeout(() => {
