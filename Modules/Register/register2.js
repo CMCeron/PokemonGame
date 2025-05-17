@@ -74,9 +74,11 @@ document.getElementById('registrationForm').addEventListener('submit', function 
                 }, 1000);
 
                 // Redireccionar hacia el juego
-                setTimeout(() => {
-                    window.location.href = './../../Public/';
-                }, 3000);
+                if(selectPokemon.nombre){
+                    setTimeout(() => {
+                        window.location.href = './../../Public/';
+                    }, 3000);
+                }
 
                 
 

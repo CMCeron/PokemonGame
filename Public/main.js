@@ -28,7 +28,6 @@ const grass = new Image();
 grass.src = '../Assets/Map/grass.png';
 
 // PARTIDA 
-
 const partida = new Partida();
 
 

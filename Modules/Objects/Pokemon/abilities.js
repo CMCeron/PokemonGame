@@ -4,7 +4,7 @@ function messageAppear(pokemonObj, n, pokemonEnemigo) {
 
     let text = document.createElement('p')
 
-    switch (n) {
+    switch (n) { // Cambiar
         case 1:
             text.onclick = () => abilitiesAppear(pokemonObj);
             text.appendChild(
@@ -134,7 +134,7 @@ function scape() {
     canvas.style.display = 'block';
 }
 
-function heal(pokemonObj, pokemonEnemigo) {
+function heal(pokemonObj) {
     pokemonObj.health = 100;
     // Vida
     printVida(pokemonObj, 'aliado');

@@ -48,7 +48,7 @@ function printBattle(pokemonEnemigo) {
     console.log(pokemonAmigo);
 
     canvas.style.display = 'none';
-    batalla.style.display = 'block'
+    batalla.style.display = 'block';
 
     batalla.style.backgroundColor = 'var(--gameBackground)';
     battle.clearRect(0, 0, canvas.width, canvas.height);

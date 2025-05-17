@@ -21,6 +21,14 @@ if ($_POST) {
             $sql->bindParam(":pokemonActive", $_SESSION['user']['pokemon']);
             $sql->execute();
         }
+
+        $consulta = 'SELECT * FROM partida WHERE userID=:userID';
+        $sql = $conn->prepare($consulta);
+        $sql->bindParam(":userID", $userID);
+        $sql->execute();
+        $partida = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+
     } catch (Exception $e) {
         echo "Error" . $e->getMessage();
     }
