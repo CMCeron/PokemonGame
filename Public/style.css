@@ -28,6 +28,23 @@ canvas{
     margin: 20px auto;
 }
 
+button{
+    display: block;
+    margin: 0 auto;
+    margin-top: 60px;
+    padding: 10px 20px;
+    font-size: 1.5rem;
+    background-color: var(--LightBack);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+button:hover {
+    background-color: var(--gameBackground);
+}
+
 #batalla{
     display: none;
 }
@@ -76,3 +93,4 @@ canvas{
 .message, .abilities{
     display: none;
 }
+

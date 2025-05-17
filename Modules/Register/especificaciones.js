@@ -55,7 +55,7 @@ document.getElementById('registrationForm').addEventListener('submit', function 
 
 
     $.ajax({
-        url: 'http://localhost/PokemonGame/Modules/Register/register2.php',
+        url: 'http://localhost/PokemonGame/Modules/Register/especificaciones.php',
         method: 'post',
         data: {
             sexo: selectedSexo,
@@ -74,11 +74,11 @@ document.getElementById('registrationForm').addEventListener('submit', function 
                 }, 1000);
 
                 // Redireccionar hacia el juego
-                if(selectPokemon.nombre){
+                //if(selectPokemon.nombre){
                     setTimeout(() => {
                         window.location.href = './../../Public/';
                     }, 3000);
-                }
+                //}
 
                 
 

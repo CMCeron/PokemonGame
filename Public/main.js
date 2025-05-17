@@ -28,7 +28,7 @@ const grass = new Image();
 grass.src = '../Assets/Map/grass.png';
 
 // PARTIDA 
-const partida = new Partida();
+const partida = new Partida(); // Se coge la última partida
 
 
 let x, y;
@@ -52,43 +52,9 @@ setTimeout(() => {
 
     if (batalla.style.display == 'block') {
         canvas.style.display = 'none';
-
-        document.addEventListener('keydown', function (event) {
-            switch (event.key) {
-
-                case 'ArrowUp':
-                case 'w':
-                    selectUp();
-                    break;
-
-                case 'ArrowDown':
-                case 's':
-                    selectDown();
-                    break;
-
-                case 'ArrowRight':
-                case 'd':
-                    selectRight();
-                    break;
-
-                case 'ArrowLeft':
-                case 'a':
-                    selectLeft();
-                    break;
-
-                case 'tab':
-                    jump();
-                    break;
-
-                case 'Enter':
-                    selectOption();
-                    break;
-            }
-        })
-
     }
 
-
+// Moverse
     document.addEventListener('keydown', function (event) {
         if (canvas.style.display == '' || canvas.style.display == 'block') { // Si esta el juego principal
             switch (event.key) {
