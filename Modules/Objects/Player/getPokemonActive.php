@@ -4,7 +4,13 @@ include($url);
 session_start();
 
 try {
-    $consulta = 'SELECT pokemonActive FROM partida JOIN userID WHERE usuarios.nombre = :nombre ORDER BY IDPartida LIMIT 1';
+    $consulta = 'SELECT partida.pokemonActive 
+                FROM partida 
+                JOIN usuarios ON partida.userID = usuarios.IDusuario 
+                WHERE usuarios.nombre = :nombre 
+                ORDER BY partida.IDPartida 
+                LIMIT 1';
+                
     $sql = $conn->prepare($consulta);
     $sql->bindParam(":nombre", $_SESSION["user"]["username"]);
     $sql->execute();
@@ -13,8 +19,6 @@ try {
     echo "Error" . $e->getMessage();
 }
 
-foreach ($pokemon as $poke) {
-    echo $poke['pokemonActive'];
-}
+    echo $pokemon[0]['pokemonActive'];
 
 ?>

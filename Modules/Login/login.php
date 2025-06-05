@@ -20,7 +20,7 @@ if ($_POST) {
 
 
             if (!empty($result[0]['nombre'])) {
-                $_SESSION['user'] = ['nombre' => $result[0]['nombre']];
+                $_SESSION['user'] = ['username' => $result[0]['nombre']];
 
                 echo 'success';
             } else {

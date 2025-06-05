@@ -31,7 +31,6 @@ canvas{
 button{
     display: block;
     margin: 0 auto;
-    margin-top: 60px;
     padding: 10px 20px;
     font-size: 1.5rem;
     background-color: var(--LightBack);

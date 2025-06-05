@@ -14,6 +14,7 @@ class Partida {
         $.ajax({
             url: 'http://localhost/PokemonGame/Modules/Partida/getUserID.php',
             method: 'get',
+            async: false,
             success: (data) => {
                 this.userID = data;
                 this.loadData();
@@ -26,6 +27,7 @@ class Partida {
             $.ajax({
                 url: 'http://localhost/PokemonGame/Modules/Partida/nuevoUsuario.php',
                 method: 'post',
+                async: false,
                 data: { userID: this.userID },
                 success: (data) => {
                     if (data) {
@@ -52,25 +54,24 @@ class Partida {
             $.ajax({
                 url: 'http://localhost/PokemonGame/Modules/Partida/cargarPartida.php',
                 method: 'post',
+                async: false,
                 data: { userID: this.userID },
                 success: (data) => {
-                    if(data == 'error: No se encontraron partidas para el usuario especificado.'){
+
+                    if (data == 'error: No se encontraron partidas para el usuario especificado.') {
                         this.newUser();
                         return;
                     }
                     if (data) {
-                        try {
-                            console.log(data);
-                            this.PositionX = data.positionX;
-                            this.PositionY = data.positionY;
-                            this.activePokemon = JSON.parse(data.activePokemon);
-                        } catch (error) {
-                        }
+                        const pokemonActivo = JSON.parse(data.activePokemon);
+                        console.log(data);
+                        this.PositionX = data.positionX;
+                        this.PositionY = data.positionY;
+                        this.activePokemon = pokemonActivo;
+
+                        console.log('POKEMON --- ' + this.activePokemon);
                     }
 
-                },
-                error: (jqXHR, textStatus, errorThrown) => {
-                    console.error('Error en la petición AJAX de partida:', textStatus, errorThrown);
                 }
             })
         }

@@ -38,6 +38,7 @@ setTimeout(() => {
     // GUARDAR PARTIDA
     const guardar = document.querySelector('button');
     guardar.onclick = () => {
+        partida.loadData();
         partida.reload(x, y, sheet.pokemonActive);
         partida.saveData();
     };

@@ -12,13 +12,15 @@ try {
     $sql->bindParam(":id", $id);
     $sql->execute();
     $pokemon = $sql->fetchAll(PDO::FETCH_ASSOC);
+    
+    // Verificar si se encontraron resultados
+    if (count($pokemon) > 0) {
+        echo $pokemon[0]['nombre'];
+    } else {
+        echo 'No se encontró ningún Pokémon con el ID proporcionado.';
+    }
 } catch (Exception $e) {
-    echo "Error" . $e->getMessage();
-}
-
-foreach ($pokemon as $p) {
-    echo $p['nombre'];
+    echo "Error: " . $e->getMessage();
 }
 
 ?>
-

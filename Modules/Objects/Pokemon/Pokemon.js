@@ -1,5 +1,6 @@
 class Pokemon {
     constructor(id, tipo, shiny, health = 100) {
+        
         this.id = id;
 
         this.src = 'http://localhost/PokemonGame/Assets/Pokemons/';
@@ -15,28 +16,26 @@ class Pokemon {
         this.mini = new Image();
         this.base = new Image();
 
-        this.getName(id).then(() => {
-            this.loadImages();
-        }).catch((error) => {
-            console.error("Error al obtener el nombre del Pokémon:", error);
-        });
+        this.getName(id);
     }
 
     getName(id) {
-        return new Promise((resolve, reject) => {
-            $.ajax({
-                url: 'http://localhost/PokemonGame/Modules/Objects/Pokemon/GetPokemon.php',
-                method: 'post',
-                data: { id: id },
-                success: (data) => {
-                    this.nombre = data.match(/^.+/)[0];
-                    resolve();
-                },
-                error: (xhr, status, error) => {
-                    reject(new Error("Error en la llamada AJAX de getname: " + status + " " + error));
+        $.ajax({
+            url: 'http://localhost/PokemonGame/Modules/Objects/Pokemon/GetPokemon.php',
+            method: 'post',
+            async: false,
+            data: { id: id },
+            success: (data) => {
+                if(data != 'ERROR'){
+                    this.nombre = data;
+
+                    this.loadImages();
+                }else{
+                    console.log("Pokemon NOMBRE --- ERROR");
                 }
-            })
+            }
         })
+
     }
 
     loadImages() {

@@ -26,8 +26,14 @@ class Player {
         $.ajax({
             url: 'http://localhost/PokemonGame/Modules/Objects/Player/getPokemonActive.php',
             method: 'get',
+            async: false,
             success: (data) => {
-                this.pokemonActive = new Pokemon(...data);
+                const dataArray = JSON.parse(data);
+                if(typeof(dataArray)==="object"){
+                    this.pokemonActive = new Pokemon(dataArray.id, dataArray.tipo, dataArray.shiny, dataArray.health);
+                }else{
+                    console.log('Error al obtener el pokemon activo');
+                }
             }
         })
     }
@@ -36,6 +42,7 @@ class Player {
         $.ajax({
             url: 'http://localhost/PokemonGame/Modules/Objects/Player/GetPlayer.php',
             method: 'get',
+            async: false,
             success: (data, status) => {
                 this.gender = data;
                 this.loadImages();
